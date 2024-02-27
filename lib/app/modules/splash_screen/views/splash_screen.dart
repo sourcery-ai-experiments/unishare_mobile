@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unishare_mobile/app/modules/onboarding_screen/views/onboarding_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -6,71 +7,91 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Stack(
-        children: [
-          // Black background with text
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                color: Colors.black,
-                height: MediaQuery.of(context).size.height / 2,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      RichText(
-                        text: TextSpan(
+      body: FutureBuilder(
+        future: Future.delayed(const Duration(seconds: 5)), // Menunggu 5 detik
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            // Setelah menunggu 5 detik, pindah ke layar onboarding
+            return const OnboardingScreen();
+          } else {
+            // Selama menunggu, tampilkan tampilan splash screen
+            return Stack(
+              children: [
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      color: Colors.black,
+                      height: MediaQuery.of(context).size.height / 1.8,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const TextSpan(
-                              text: 'Uni',
-                              style: TextStyle(
-                                fontSize: 48.0,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white,
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  const TextSpan(
+                                    text: 'Uni',
+                                    style: TextStyle(
+                                      fontSize: 48.0,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: 'Share',
+                                    style: TextStyle(
+                                      fontSize: 48.0,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.orange.shade900,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            TextSpan(
-                              text: 'Share',
+                            const SizedBox(height: 10.0),
+                            Text(
+                              'Unlock Your Opportunities\nBoost Your Career',
                               style: TextStyle(
-                                fontSize: 48.0,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.orange.shade900,
+                                fontSize: 16.0,
+                                color: Colors.grey.shade100,
                               ),
-                            ),    
+                              textAlign: TextAlign.center,
+                            ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 10.0),
-                       Text(
-                        'Unlock Your Opportunities\nBoost Your Career',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.grey.shade100,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-          const Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: CustomGrayLayer(),
-            ),
-          ),
-          // Orange layer (unchanged)
-          const Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: CustomOrangeLayer(),
-            ),
-          ),
-        ],
+                const Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: CustomGrayLayer(),
+                  ),
+                ),
+                const Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: CustomOrangeLayer(),
+                  ),
+                ),
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 1.1,
+                    child: Image.asset(
+                      'assets/img/unishare_splash.png',
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
+        },
       ),
     );
   }
@@ -88,23 +109,6 @@ class CustomOrangeLayer extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.orange.shade900,
         ),
-        child:  Stack(
-          children: [
-            // Orange background
-           Positioned(
-              top: 0, // Adjust the top position as needed
-              left: 0,
-              right: 0,
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width, // Set width to match screen width
-                height: MediaQuery.of(context).size.height/5, // Set height to match the container height
-                child: Image.asset(
-                  'assets/img/unishare_splash.png', // Replace with your image path
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -115,16 +119,16 @@ class CustomClipPath extends CustomClipper<Path> {
     final path = Path();
 
     // Adjust border offset
-    final double borderWidth = 2.0;
+    const double borderWidth = 2.0;
 
     // Move to the starting point of the curve
-    path.moveTo(0.0, size.height * 0.2);
+    path.moveTo(0.0, size.height * 0.35);
 
     // Define control points for quadratic Bezier curve
     double controlPointX = size.width / 2;
-    double controlPointY = 0.0; // Control point at the top-middle
+    double controlPointY = 1; // Control point at the top-middle
     double endPointX = size.width;
-    double endPointY = size.height * 0.2;
+    double endPointY = size.height * 0.35;
 
     // Draw the quadratic Bezier curve to the top-right
     path.quadraticBezierTo(controlPointX, controlPointY, endPointX, endPointY);
@@ -141,7 +145,7 @@ class CustomClipPath extends CustomClipper<Path> {
     // Create a bordered path
     final borderedPath = Path();
     borderedPath.addPath(path, Offset.zero);
-    borderedPath.addPath(path, Offset(borderWidth, borderWidth));
+    borderedPath.addPath(path, const Offset(borderWidth, borderWidth));
 
     return borderedPath;
   }
