@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:unishare_mobile/screens/onboarding_screen.dart';
-import 'package:unishare_mobile/screens/homepage.dart';
+import 'package:unishare_mobile/app/modules/splash_screen/views/splash_screen.dart';
 
 void main() {
   runApp(const MaterialApp(
     home: Scaffold(
-      body: OnboardingScreen(), //OnboardingScreen(),
+      body: SplashScreen(
+      ),
     ),
   ));
 }

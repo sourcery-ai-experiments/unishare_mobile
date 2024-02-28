@@ -54,9 +54,9 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: 30.0),
-                  child: PrimaryButton(),
+                  child: PrimaryButton("Masuk"),
                 ),
-                SecondaryButton(),
+                const SecondaryButton("Daftar Akun"),
                 const Padding(
                   padding: EdgeInsets.only(top: 150.0, bottom: 30),
                   child: SizedBox(

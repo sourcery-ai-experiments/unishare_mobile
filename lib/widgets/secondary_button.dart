@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SecondaryButton extends StatelessWidget {
+  const SecondaryButton(this.message, {super.key});
+
+  final String message;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,9 +23,9 @@ class SecondaryButton extends StatelessWidget {
               ),
             )),
         onPressed: () {},
-        child: const Text(
-          "Daftar Akun",
-          style: TextStyle(
+        child: Text(
+          message,
+          style: const TextStyle(
               fontFamily: 'Rubik', fontWeight: FontWeight.w400, fontSize: 16),
         ),
       ),
