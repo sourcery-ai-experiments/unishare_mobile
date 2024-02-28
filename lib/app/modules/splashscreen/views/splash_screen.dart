@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unishare_mobile/app/modules/onboarding_screen/views/onboarding_screen.dart';
+import 'package:unishare_mobile/app/modules/onboarding/views/onboarding_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 5)), // Menunggu 5 detik
+        future: Future.delayed(const Duration(seconds: 3)), // Menunggu 5 detik
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // Setelah menunggu 5 detik, pindah ke layar onboarding
@@ -118,7 +118,7 @@ class CustomClipPath extends CustomClipper<Path> {
   Path getClip(Size size) {
     final path = Path();
 
-    // Adjust border offset
+    // Adjust border offsetr
     const double borderWidth = 2.0;
 
     // Move to the starting point of the curve

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton(this.message, {super.key});
+  const PrimaryButton(this.message, {super.key,  required this.onPressed});
 
   final String message;
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class PrimaryButton extends StatelessWidget {
           foregroundColor: MaterialStateProperty.all(Colors.white),
           backgroundColor: MaterialStateProperty.all(primaryButtonColor),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           message, // Display the passed-in message
           style: const TextStyle(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:unishare_mobile/app/modules/auth/login/views/login_screen.dart';
 import 'package:unishare_mobile/widgets/primary_button.dart';
 import 'package:unishare_mobile/widgets/secondary_button.dart';
+
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -52,9 +54,19 @@ class OnboardingScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 30.0),
-                  child: PrimaryButton("Masuk"),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30.0),
+                    child: PrimaryButton(
+                  "Masuk",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPage(),
+                      ),
+                    );
+                  },
+                ),
                 ),
                 const SecondaryButton("Daftar Akun"),
                 const Padding(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -86,21 +86,24 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(
+                  ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black, backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
                       minimumSize: const Size(120.0, 40.0),
                     ),
-                    child: Image.asset('assets/images/google_logo.png'),
+                    icon: const Icon(Icons.g_translate, color: Colors.blue),
+                    label: const Text('Google'),
                   ),
-                  ElevatedButton(
+                  ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                       minimumSize: const Size(120.0, 40.0),
                     ),
-                    child: Image.asset('assets/images/facebook_logo.png'),
+                    icon: const Icon(Icons.facebook),
+                    label: const Text('Facebook'),
                   ),
                 ],
               ),
