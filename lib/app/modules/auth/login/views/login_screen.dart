@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:unishare_mobile/widgets/primary_button.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -40,8 +41,8 @@ class _LoginPageState extends State<LoginPage> {
               TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(
-                  labelText: 'Email atau Nomor HP',
-                  border: OutlineInputBorder(),
+                  labelText: 'Masukkan Email atau Nomor HP',
+                  border: UnderlineInputBorder(),
                 ),
               ),
               const SizedBox(height: 20.0),
@@ -49,8 +50,8 @@ class _LoginPageState extends State<LoginPage> {
                 controller: _passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
+                  labelText: 'Masukkan Password',
+                  border: UnderlineInputBorder(),
                 ),
               ),
               const SizedBox(height: 20.0),
@@ -70,17 +71,17 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               const SizedBox(height: 40.0),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(double.infinity, 40.0),
+              Center(
+                child: Column(
+                  children: [
+                    PrimaryButton("Masuk Akun", onPressed: () {}),
+                    const SizedBox(height: 20.0),
+                    const Text(
+                      'Atau masuk menggunakan',
+                      textAlign: TextAlign.justify,
+                    ),
+                  ],
                 ),
-                child: const Text('Masuk Akun'),
-              ),
-              const SizedBox(height: 20.0),
-              const Text(
-                'Atau masuk menggunakan',
-                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20.0),
               Row(
