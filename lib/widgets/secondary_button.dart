@@ -8,7 +8,7 @@ class SecondaryButton extends StatelessWidget {
       child: OutlinedButton(
         style: ButtonStyle(
             minimumSize: const MaterialStatePropertyAll(
-              Size(320, 60),
+              Size(320, 54),
             ),
             foregroundColor: MaterialStateProperty.all(
               const Color.fromARGB(255, 247, 86, 0),

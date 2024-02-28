@@ -10,7 +10,7 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
           minimumSize: const MaterialStatePropertyAll(
-            Size(320, 60),
+            Size(320, 54),
           ),
           foregroundColor: MaterialStateProperty.all(Colors.white),
           backgroundColor: MaterialStateProperty.all(
