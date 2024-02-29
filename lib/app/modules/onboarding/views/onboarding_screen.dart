@@ -56,17 +56,17 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30.0),
-                    child: PrimaryButton(
-                  "Masuk",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginPage(),
-                      ),
-                    );
-                  },
-                ),
+                  child: PrimaryButton(
+                    "Masuk",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 const SecondaryButton("Daftar Akun"),
                 const Padding(
@@ -75,7 +75,7 @@ class OnboardingScreen extends StatelessWidget {
                     width: 340,
                     height: 40,
                     child: Text(
-                      'Dengan masuk atau mendaftar, kamu menyetujui Persyaratan Layanan & Kebijakan Privasi kami',
+                      'Dengan masuk atau mendaftar, kamu smenyetujui Persyaratan Layanan & Kebijakan Privasi kami',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xFF7C7974),
