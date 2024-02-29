@@ -220,7 +220,7 @@ class Homepage extends StatelessWidget {
                         height: 250,
                         child: const Center(
                           child: SingleChildScrollView(
-                            padding: EdgeInsets.only(top: 10,left: 13, right: 15, bottom: 16),
+                            padding: EdgeInsets.only(top: 10,left: 13, right: 13, bottom: 16),
                             scrollDirection: Axis.horizontal,
                             child: Row(mainAxisAlignment: MainAxisAlignment.center,
                               children: [
