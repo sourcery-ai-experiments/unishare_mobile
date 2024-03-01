@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unishare_mobile/widgets/homepage_card.dart';
+import 'package:unishare/widgets/homepage_card.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});

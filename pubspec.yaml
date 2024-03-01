@@ -56,13 +56,21 @@
     # the material Icons class.
     uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/img/
-    - assets/img/dazai.jpg
-    - assets/img/demonzz.jpg
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+    # To add assets to your application, add an assets section, like this:
+    assets:
+      - assets/img/Banner.png
+      - assets/img/beasiswa.png
+      - assets/img/dazai.jpg
+      - assets/img/google.png
+      - assets/img/chat.png
+      - assets/img/jadwal.png
+      - assets/img/leaderboard.png
+      - assets/img/logoHD.png
+      - assets/img/milestone.png
+      - assets/img/notifikasi.png
+      - assets/img/onboarding.png
+      - assets/img/unishare_splash.png
+      - assets/img/unishare_text.png
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware
@@ -76,19 +84,19 @@
     # list giving the asset and other descriptors for the font. For
     # example:
     fonts:
-    - family: Rubik
-      fonts:
-        - asset: assets/fonts/Rubik-Regular.ttf
-        - asset: assets/fonts/Rubik-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Rubik-Italic.ttf
-          style: italic
-        - asset: assets/fonts/Rubik-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Rubik-Black.ttf
-          weight: 900
-        - asset: assets/fonts/Rubik-MediumItalic.ttf
-          weight: 500
+      - family: Rubik
+        fonts:
+          - asset: assets/fonts/Rubik-Regular.ttf
+          - asset: assets/fonts/Rubik-Medium.ttf
+            weight: 500
+          - asset: assets/fonts/Rubik-Italic.ttf
+            style: italic
+          - asset: assets/fonts/Rubik-Bold.ttf
+            weight: 700
+          - asset: assets/fonts/Rubik-Black.ttf
+            weight: 900
+          - asset: assets/fonts/Rubik-MediumItalic.ttf
+            weight: 500
 
     #   - family: Trajan Pro
     #     fonts:
