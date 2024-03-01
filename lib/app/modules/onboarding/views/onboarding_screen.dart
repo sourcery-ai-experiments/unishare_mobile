@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:unishare_mobile/app/modules/auth/login/views/login_screen.dart';
-import 'package:unishare_mobile/widgets/primary_button.dart';
-import 'package:unishare_mobile/widgets/secondary_button.dart';
+import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
+import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
+import 'package:unishare/widgets/primary_button.dart';
+import 'package:unishare/widgets/secondary_button.dart';
 
 
 class OnboardingScreen extends StatelessWidget {
@@ -68,7 +69,14 @@ class OnboardingScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SecondaryButton("Daftar Akun"),
+                 SecondaryButton("Daftar Akun", null,  onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterPage(),
+                    ),
+                  );
+                }),
                 const Padding(
                   padding: EdgeInsets.only(top: 60.0, bottom: 25),
                   child: SizedBox(
