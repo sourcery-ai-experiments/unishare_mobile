@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unishare/widgets/google_button.dart';
 import 'package:unishare/widgets/primary_button.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 
@@ -92,16 +93,7 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.white,
-                      minimumSize: const Size(150.0, 50.0),
-                    ),
-                    icon: const Icon(Icons.g_mobiledata, color: Colors.blue),
-                    label: const Text('Google'),
-                  ),
+                 GoogleButton(),
                   ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
