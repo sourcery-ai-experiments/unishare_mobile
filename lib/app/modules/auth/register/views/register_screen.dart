@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/widgets/primary_button.dart';
-import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
+import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Masuk Akun',
+          'Daftar Akun',
           style: TextStyle(
               fontFamily: 'Rubik', fontWeight: FontWeight.w500, fontSize: 20.0),
         ),
@@ -38,13 +38,21 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 40.0),
               TextField(
+                controller: _nameController,
+                decoration: const InputDecoration(
+                  labelText: 'Masukkan Nama Lengkap',
+                  border: UnderlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 40.0),
+              TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(
                   labelText: 'Masukkan Email atau Nomor HP',
                   border: UnderlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 40.0),
               TextField(
                 controller: _passwordController,
                 obscureText: true,
@@ -53,36 +61,14 @@ class _LoginPageState extends State<LoginPage> {
                   border: UnderlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: false,
-                        onChanged: (value) {},
-                        checkColor: Colors.orange.shade700,
-                      ),
-                      const Text('Remember Password'),
-                    ],
-                  ),
-                  Text(
-                    'Lupa Password?',
-                    style: TextStyle(
-                        color: Colors.orange.shade700,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
               const SizedBox(height: 40.0),
               Center(
                 child: Column(
                   children: [
-                    PrimaryButton("Masuk Akun", onPressed: () {}),
+                    PrimaryButton("Daftar Akun", onPressed: () {}),
                     const SizedBox(height: 20.0),
                     const Text(
-                      'Atau masuk menggunakan',
+                      'Atau daftar menggunakan',
                       textAlign: TextAlign.justify,
                     ),
                   ],
@@ -116,19 +102,19 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Belum punya akun?'),
+                  const Text('Sudah punya akun?'),
                   const SizedBox(width: 10.0),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const RegisterPage(),
+                          builder: (context) => const LoginPage(),
                         ),
                       );
                     },
                     child: Text(
-                      'Register!',
+                      'Login!',
                       style: TextStyle(
                         color: Colors.orange.shade700,
                         fontWeight: FontWeight.bold,
