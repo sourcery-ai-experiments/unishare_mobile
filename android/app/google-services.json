@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "620353739245",
+    "project_id": "unishare-ddc6b",
+    "storage_bucket": "unishare-ddc6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620353739245:android:0d0d9373f115382b81efe4",
+        "android_client_info": {
+          "package_name": "com.unishare.unishare_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL1Oour6NGDTWh7fpvTJBrSuQGTtfFTts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
