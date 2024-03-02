@@ -34,6 +34,7 @@
     # Use with the CupertinoIcons class for iOS style icons.
     cupertino_icons: ^1.0.6
     firebase_core: ^2.25.5
+    flutter_svg: ^2.0.5
 
   dev_dependencies:
     flutter_test:
@@ -59,19 +60,8 @@
 
     # To add assets to your application, add an assets section, like this:
     assets:
-      - assets/img/Banner.png
-      - assets/img/beasiswa.png
-      - assets/img/dazai.jpg
-      - assets/img/google.png
-      - assets/img/chat.png
-      - assets/img/jadwal.png
-      - assets/img/leaderboard.png
-      - assets/img/logoHD.png
-      - assets/img/milestone.png
-      - assets/img/notifikasi.png
-      - assets/img/onboarding.png
-      - assets/img/unishare_splash.png
-      - assets/img/unishare_text.png
+      - assets/img/
+      - assets/icons/
 
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware

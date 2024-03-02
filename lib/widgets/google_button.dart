@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class GoogleButton extends StatelessWidget {
   const GoogleButton({super.key});
@@ -14,11 +15,7 @@ class GoogleButton extends StatelessWidget {
         backgroundColor: Colors.white,
         minimumSize: const Size(150.0, 50.0),
       ),
-      icon: Image.asset(
-        'assets/img/google.png',
-        width: 20,
-        height: 20,
-      ),
+      icon: SvgPicture.asset('assets/icons/Google.svg', height: 20, width: 20,),
       label: const Text(
         'Google',
         style: TextStyle(

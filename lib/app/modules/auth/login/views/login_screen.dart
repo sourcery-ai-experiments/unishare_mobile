@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
 import 'package:unishare/widgets/google_button.dart';
 import 'package:unishare/widgets/primary_button.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
@@ -80,7 +81,17 @@ class _LoginPageState extends State<LoginPage> {
               Center(
                 child: Column(
                   children: [
-                    PrimaryButton("Masuk Akun", onPressed: () {}),
+                    PrimaryButton(
+                      "Masuk Akun",
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Homepage(),
+                          ),
+                        );
+                      },
+                    ),
                     const SizedBox(height: 20.0),
                     const Text(
                       'Atau masuk menggunakan',
@@ -93,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                 GoogleButton(),
+                  GoogleButton(),
                   ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
