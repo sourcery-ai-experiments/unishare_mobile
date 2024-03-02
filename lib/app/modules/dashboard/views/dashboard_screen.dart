@@ -216,13 +216,15 @@ class Homepage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: screenWidth-60,
+                        width: screenWidth - 60,
                         height: 250,
                         child: const Center(
                           child: SingleChildScrollView(
-                            padding: EdgeInsets.only(top: 10,left: 13, right: 13, bottom: 16),
+                            padding: EdgeInsets.only(
+                                top: 10, left: 13, right: 13, bottom: 16),
                             scrollDirection: Axis.horizontal,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
                                   padding: EdgeInsets.only(right: 15),
