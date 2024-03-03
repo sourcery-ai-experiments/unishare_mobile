@@ -89,7 +89,7 @@ class HomepageCard extends StatelessWidget {
                       padding: EdgeInsets.only(left: 3),
                       child: Text(
                         textAlign: TextAlign.start,
-                        '28 September',
+                        '28 September 2024',
                         style: TextStyle(
                           color: Color(0xFF403D39),
                           fontSize: 12,

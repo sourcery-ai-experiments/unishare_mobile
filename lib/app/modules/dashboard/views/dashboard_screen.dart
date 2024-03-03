@@ -1,20 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/widgets/homepage_card.dart';
-import 'package:unishare/widgets/menubar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return _HomepageState();
+  }
+}
+
+class _HomepageState extends State<Homepage> {
+  int currentPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.white,
+        height: 74,
+        selectedIndex: currentPageIndex,
+        indicatorColor: Color.fromRGBO(217, 217, 217, 1),
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        destinations: [
+          NavigationDestination(
+              icon: SvgPicture.asset('assets/icons/home-outlined.svg'),
+              selectedIcon: SvgPicture.asset('assets/icons/home-filled.svg'),
+              label: "Home"),
+          NavigationDestination(
+              icon: SvgPicture.asset('assets/icons/karir-outlined.svg'),
+              selectedIcon: SvgPicture.asset('assets/icons/karir-filled.svg'),
+              label: "Karir"),
+          NavigationDestination(
+              icon: SvgPicture.asset('assets/icons/acara-outlined.svg'),
+              selectedIcon: SvgPicture.asset('assets/icons/acara-filled.svg'),
+              label: "Acara"),
+          NavigationDestination(
+              icon: SvgPicture.asset('assets/icons/profile-outlined.svg'),
+              selectedIcon: SvgPicture.asset('assets/icons/profile-filled.svg'),
+              label: "Profil"),
+        ],
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: SizedBox(
           width: screenWidth,
-          height: screenHeight,
+          height: screenHeight + 200,
           child: Stack(
             children: [
               // SECTION 1: IMAGE & ILLUSTRATION (orange box)
@@ -76,12 +114,28 @@ class Homepage extends StatelessWidget {
                 ),
               ),
 
+              Positioned(
+                top: 50,
+                right: 30,
+                child: Container(
+                  width: 54,
+                  height: 54,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF1F1D18),
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: AssetImage('assets/img/demonzz.jpg'),
+                        fit: BoxFit.cover),
+                  ),
+                ),
+              ),
+
               // SECTION 3: MENUS and CARDS (rounded white box)
               Positioned(
                 top: 248,
                 child: Container(
                   width: screenWidth,
-                  height: screenHeight,
+                  height: screenHeight + 100,
                   decoration: const ShapeDecoration(
                     color: Color(0xFFF5F7FF),
                     shape: RoundedRectangleBorder(
@@ -276,20 +330,49 @@ class Homepage extends StatelessWidget {
                               ),
                             ),
                           ),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: Text(
+                              'Magang',
+                              style: TextStyle(
+                                color: Color(0xFF1F1D18),
+                                fontSize: 16,
+                                fontFamily: 'Rubik',
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: screenWidth - 60,
+                            height: 250,
+                            child: const Center(
+                              child: SingleChildScrollView(
+                                padding: EdgeInsets.only(
+                                    top: 10, left: 13, right: 13, bottom: 16),
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 15),
+                                      child: HomepageCard(),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 15),
+                                      child: HomepageCard(),
+                                    ),
+                                    HomepageCard()
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
               ),
-
-              // SECTION 4: BOTTOM MENUBAR
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Menubar(),
-              )
             ],
           ),
         ),
