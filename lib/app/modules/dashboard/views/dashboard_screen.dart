@@ -1,53 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/widgets/homepage_card.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
-
-  @override
-  State<StatefulWidget> createState() {
-    return _HomepageState();
-  }
-}
-
-class _HomepageState extends State<Homepage> {
-  int currentPageIndex = 0;
+class Dashboard extends StatelessWidget {
+  const Dashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: Colors.white,
-        height: 74,
-        selectedIndex: currentPageIndex,
-        indicatorColor: const Color.fromRGBO(217, 217, 217, 1),
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        destinations: [
-          NavigationDestination(
-              icon: SvgPicture.asset('assets/icons/home-outlined.svg'),
-              selectedIcon: SvgPicture.asset('assets/icons/home-filled.svg'),
-              label: "Home"),
-          NavigationDestination(
-              icon: SvgPicture.asset('assets/icons/karir-outlined.svg'),
-              selectedIcon: SvgPicture.asset('assets/icons/karir-filled.svg'),
-              label: "Karir"),
-          NavigationDestination(
-              icon: SvgPicture.asset('assets/icons/acara-outlined.svg'),
-              selectedIcon: SvgPicture.asset('assets/icons/acara-filled.svg'),
-              label: "Acara"),
-          NavigationDestination(
-              icon: SvgPicture.asset('assets/icons/profile-outlined.svg'),
-              selectedIcon: SvgPicture.asset('assets/icons/profile-filled.svg'),
-              label: "Profil"),
-        ],
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: SizedBox(
