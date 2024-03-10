@@ -32,7 +32,7 @@ class CardDetailTop extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 5,
-                offset: const Offset(0, 3), // Shadow position (horizontal, vertical)
+                offset: const Offset(0, 3),
               ),
             ], 
           ),

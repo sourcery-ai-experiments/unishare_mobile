@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
+import 'package:unishare/app/modules/homescreen/home_screen.dart';
 import 'package:unishare/widgets/google_button.dart';
 import 'package:unishare/widgets/primary_button.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const Homepage(),
+                            builder: (context) => const HomeScreen(),
                           ),
                         );
                       },
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  GoogleButton(),
+                  const GoogleButton(),
                   ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
