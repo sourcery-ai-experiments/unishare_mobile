@@ -23,7 +23,7 @@ class _HomepageState extends State<Homepage> {
         backgroundColor: Colors.white,
         height: 74,
         selectedIndex: currentPageIndex,
-        indicatorColor: Color.fromRGBO(217, 217, 217, 1),
+        indicatorColor: const Color.fromRGBO(217, 217, 217, 1),
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
