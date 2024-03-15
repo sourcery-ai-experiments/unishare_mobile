@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:unishare/app/modules/auth/login/bloc/login_bloc.dart';
 import 'package:unishare/widgets/google_button.dart';
 import 'package:unishare/widgets/primary_button.dart';
+import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -13,6 +16,30 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final AuthService _authService = AuthService();
+
+  final Logger _logger = Logger();
+
+  Future<void> _login() async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+    if (email.isEmpty || password.isEmpty) {
+      _logger.e("Email or password is empty");
+      return;
+    }
+
+    final user = await _authService.signInWithEmailAndPassword(email, password);
+    if (user != null) {
+      _logger.i("Login successful");
+       Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Homepage()),
+    );
+
+    } else {
+      _logger.w("Login failed");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
               Center(
                 child: Column(
                   children: [
-                    PrimaryButton("Masuk Akun", onPressed: () {}),
+                    PrimaryButton("Masuk Akun", onPressed: _login),
                     const SizedBox(height: 20.0),
                     const Text(
                       'Atau masuk menggunakan',
@@ -93,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                 GoogleButton(),
+                  const GoogleButton(),
                   ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
