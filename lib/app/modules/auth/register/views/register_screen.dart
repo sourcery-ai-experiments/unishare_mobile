@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/widgets/primary_button.dart';
 import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
+import 'package:unishare/app/modules/auth/register/controller/register_controller.dart';
+import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
+import 'package:logger/logger.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -13,6 +16,30 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _nameController = TextEditingController();
+  final RegisterService _registerService = RegisterService();
+
+  final Logger _logger = Logger();
+
+  Future<void> _register() async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+    final displayName = _nameController.text.trim();
+    if (email.isEmpty || password.isEmpty || displayName.isEmpty) {
+      _logger.e("Email, password, or display name is empty");
+      return;
+    }
+
+    final user = await _registerService.registerUser(email, password, displayName);
+    if (user != null) {
+      _logger.i("Register successful");
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Homepage()),
+      );
+    } else {
+      _logger.w("Register failed");
+    }
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Center(
                 child: Column(
                   children: [
-                    PrimaryButton("Daftar Akun", onPressed: () {}),
+                    PrimaryButton("Daftar Akun", onPressed: _register),
                     const SizedBox(height: 20.0),
                     const Text(
                       'Atau daftar menggunakan',

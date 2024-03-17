@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:unishare/app/modules/auth/login/bloc/login_bloc.dart';
+import 'package:unishare/app/modules/auth/login/controller/login_controller.dart';
 import 'package:unishare/widgets/google_button.dart';
 import 'package:unishare/widgets/primary_button.dart';
 import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
@@ -16,7 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final AuthService _authService = AuthService();
+  final LoginService _loginService = LoginService();
 
   final Logger _logger = Logger();
 
@@ -28,12 +28,12 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    final user = await _authService.signInWithEmailAndPassword(email, password);
+    final user = await _loginService .signInWithEmailAndPassword(email, password);
     if (user != null) {
       _logger.i("Login successful");
        Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => Homepage()),
+      MaterialPageRoute(builder: (context) => const Homepage()),
     );
 
     } else {

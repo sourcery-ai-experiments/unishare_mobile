@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/widgets/homepage_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -8,7 +9,10 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return Container(
+    User? user = FirebaseAuth.instance.currentUser;
+    String fullname = user!.displayName!;
+
+    return SizedBox(
       width: screenWidth,
       height: screenHeight,
       child: Stack(
@@ -28,13 +32,13 @@ class Homepage extends StatelessWidget {
             ),
           ),
           // SECTION 2: WELCOMING TEXT
-          const Positioned(
+          Positioned(
             left: 30,
             top: 50,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Selamat Datang,',
                   style: TextStyle(
                     color: Colors.white,
@@ -44,15 +48,15 @@ class Homepage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '{Full Name}',
-                  style: TextStyle(
+                  fullname,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontFamily: 'Rubik',
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(top: 16),
                   child: SizedBox(
                     width: 210,
@@ -216,13 +220,15 @@ class Homepage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: screenWidth-60,
+                        width: screenWidth - 60,
                         height: 250,
                         child: const Center(
                           child: SingleChildScrollView(
-                            padding: EdgeInsets.only(top: 10,left: 13, right: 13, bottom: 16),
+                            padding: EdgeInsets.only(
+                                top: 10, left: 13, right: 13, bottom: 16),
                             scrollDirection: Axis.horizontal,
-                            child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
                                   padding: EdgeInsets.only(right: 15),
