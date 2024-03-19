@@ -76,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
               TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(
-                  labelText: 'Masukkan Email atau Nomor HP',
+                  labelText: 'Masukkan Email Address',
                   border: UnderlineInputBorder(),
                 ),
               ),
