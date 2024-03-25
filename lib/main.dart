@@ -10,8 +10,7 @@ void main() async {
   );
   runApp(const MaterialApp(
     home: Scaffold(
-      body: SplashScreen(
-      ),
+      body: SplashScreen(),
     ),
   ));
 }
