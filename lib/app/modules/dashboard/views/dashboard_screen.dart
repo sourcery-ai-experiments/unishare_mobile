@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:unishare/app/modules/jadwal/jadwal_page.dart';
 import 'package:unishare/widgets/homepage_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -8,6 +10,8 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    User? user = FirebaseAuth.instance.currentUser;
+    String fullname = user!.displayName!;
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -31,14 +35,14 @@ class Dashboard extends StatelessWidget {
                 ),
               ),
               // SECTION 2: WELCOMING TEXT
-              const Positioned(
+              Positioned(
                 left: 30,
                 top: 50,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Selamat Datang,',
+                    const Text(
+                      'Selamat Datang',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,
@@ -47,15 +51,15 @@ class Dashboard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '{Full Name}',
-                      style: TextStyle(
+                      fullname,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontFamily: 'Rubik',
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(top: 16),
                       child: SizedBox(
                         width: 210,
@@ -167,7 +171,14 @@ class Dashboard extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => const JadwalMain(),
+                                          ),
+                                        );
+                                      },
                                       icon: Image.asset(
                                         'assets/icons/jadwal.png',
                                       ),
@@ -210,7 +221,7 @@ class Dashboard extends StatelessWidget {
                               // 5. notifikasi
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(top: 12, right: 29),
+                                const EdgeInsets.only(top: 12, right: 29),
                                 child: Column(
                                   children: [
                                     IconButton(
