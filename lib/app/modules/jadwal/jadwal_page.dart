@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/app/modules/jadwal/jadwal.dart';
+import 'package:unishare/app/modules/jadwal/to_do_list.dart';
 
 class JadwalMain extends StatefulWidget {
   const JadwalMain({super.key});
@@ -12,7 +13,7 @@ class _JadwalMainState extends State<JadwalMain> {
 
   final List<Widget> _pages = [
     const JadwalPage(),
-    const JadwalPage(),
+    const ToDoList(),
   ];
 
   @override
