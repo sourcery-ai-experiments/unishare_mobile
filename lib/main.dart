@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:unishare/app/modules/admin/dashboard_admin.dart';
 import 'package:unishare/app/modules/splashscreen/views/splash_screen.dart';
 import 'firebase_options.dart';
 
@@ -11,7 +12,7 @@ void main() async {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(
-      body: SplashScreen(),
+      body: AdminHomePage(),
     ),
   ));
 }

@@ -78,8 +78,11 @@ class DaDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(25.0),
             child: ListTile(
-              title: const Text('L O G O U T'),
-              leading: const Icon(Icons.logout),
+              title: const Text(
+                'L O G O U T',
+                style: TextStyle(color: Colors.red),
+              ),
+              leading: const Icon(Icons.logout, color: Colors.red,),
               onTap: () {},
             ),
           ),
