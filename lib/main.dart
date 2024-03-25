@@ -14,7 +14,7 @@ void main() async {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(
-      body: NotificationPage(),
+      body: SplashScreen(),
     ),
   ));
 }

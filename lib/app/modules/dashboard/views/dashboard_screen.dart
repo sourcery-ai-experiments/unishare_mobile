@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/app/modules/jadwal/jadwal_page.dart';
+import 'package:unishare/app/modules/notification/views/notification_screen.dart';
 import 'package:unishare/widgets/homepage_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -226,7 +227,13 @@ class Dashboard extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const NotificationPage()));
+                                      },
                                       icon: Image.asset(
                                         'assets/icons/notifikasi.png',
                                       ),
