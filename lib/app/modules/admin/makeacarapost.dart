@@ -9,7 +9,7 @@ class MakeAcaraPost extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Buat Karir',
+          'Buat Acara',
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -27,14 +27,14 @@ class MakeAcaraPost extends StatelessWidget {
             ),
             // judul
             const Text(
-              'Judul Karir',
+              'Judul Acara',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const DaTextField(
-              hintText: 'Masukkan Judul Karir',
+              hintText: 'Masukkan Judul Acara',
             ),
             const SizedBox(height: 20),
 
