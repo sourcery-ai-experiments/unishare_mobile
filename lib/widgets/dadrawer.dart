@@ -40,16 +40,6 @@ class DaDrawer extends StatelessWidget {
                   title:
                       Text('Buat Karir', style: TextStyle(color: Colors.white)),
                   leading: Icon(Icons.settings),
-                  onTap: () {},
-                ),
-              ),
-              //settings list tile
-              Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: ListTile(
-                  title:
-                      Text('Buat Acara', style: TextStyle(color: Colors.white)),
-                  leading: Icon(Icons.settings),
                   onTap: () {
                     Navigator.pop(context);
 
@@ -59,6 +49,16 @@ class DaDrawer extends StatelessWidget {
                           builder: (context) => MakeAcaraPost(),
                         ));
                   },
+                ),
+              ),
+              //settings list tile
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: ListTile(
+                  title:
+                      Text('Buat Acara', style: TextStyle(color: Colors.white)),
+                  leading: Icon(Icons.settings),
+                  onTap: () {},
                 ),
               ),
               //settings list tile
