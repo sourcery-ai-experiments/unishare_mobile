@@ -135,10 +135,15 @@ class MakeAcaraPost extends StatelessWidget {
             const SizedBox(height: 20),
 
             ElevatedButton(
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(
+                  Color.fromRGBO(247, 86, 0, 1),
+                ),padding: MaterialStatePropertyAll(EdgeInsets.only(left: 150, right: 150, top: 15, bottom: 15), )
+              ),
               onPressed: () {
                 // Tambahkan logika untuk mengirim formulir
               },
-              child: const Text('Unggah'),
+              child: const Text('Unggah', style: TextStyle(color: Colors.white),),
             ),
             const SizedBox(height: 20),
           ],

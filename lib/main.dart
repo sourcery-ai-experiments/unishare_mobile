@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:unishare/app/modules/admin/makebeasiswapost.dart';
 import 'package:unishare/app/modules/splashscreen/views/splash_screen.dart';
 import 'firebase_options.dart';
+
+// import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
+import 'package:unishare/app/modules/notification/views/notification_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

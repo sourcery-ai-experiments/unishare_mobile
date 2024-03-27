@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
               TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(
-                  labelText: 'Masukkan Email atau Nomor HP',
+                  labelText: 'Masukkan Email address',
                   border: UnderlineInputBorder(),
                 ),
               ),
