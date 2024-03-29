@@ -12,7 +12,7 @@ class Dashboard extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     User? user = FirebaseAuth.instance.currentUser;
-    String fullname = user!.displayName!;
+    String fullname = user?.displayName ?? 'Default Name';
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
