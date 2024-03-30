@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v3 # checkout the repo
       - uses: subosito/flutter-action@v2
         with:
-          channel: "dev" # or: 'beta', 'dev', 'master' (or 'main')
+          channel: "beta" # or: 'beta', 'dev', 'master' (or 'main')
 
       - name: Install dependencies
         run: flutter pub get
