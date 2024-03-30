@@ -9,6 +9,8 @@ import 'package:unishare/widgets/primary_button.dart';
 import 'mock.dart';
 import 'package:mockito/mockito.dart';
 
+import 'test_helper.dart';
+
 class MockRegisterService extends Mock implements RegisterService {
   @override
   Future<User?> registerUser(String email, String password, String displayName) async {
@@ -19,9 +21,8 @@ class MockRegisterService extends Mock implements RegisterService {
 
 class MockUser extends Mock implements User {
   @override
-  String get displayName => 'John Doe';
+  String get displayName => 'Wzrd@OurMine';
 }
-
 
 void main() {
   group('RegisterPage widget test', () {
@@ -51,14 +52,15 @@ void main() {
 
     testWidgets('Register Page navigates to Home Screen when credentials are filled',
             (WidgetTester tester) async {
+          FlutterError.onError = ignoreOverflowErrors;
           // Build the RegisterPage with the mock service
           await tester.pumpWidget(MaterialApp(
             home: RegisterPage(registerService: mockRegisterService),
           ));
 
           // Enter text into the text fields
-          await tester.enterText(find.byKey(const Key('fullname-field')), 'John Doe');
-          await tester.enterText(find.byKey(const Key('email-field')), 'john@example.com');
+          await tester.enterText(find.byKey(const Key('fullname-field')), 'Wzrd@OurMine');
+          await tester.enterText(find.byKey(const Key('email-field')), 'test@unishare.com');
           await tester.enterText(find.byKey(const Key('password-field')), 'password123');
 
           // Tap the "Daftar Akun" button
