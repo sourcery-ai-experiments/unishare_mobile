@@ -3,11 +3,13 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Test Reporter
+name: Integration Testing
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - '*'
   pull_request:
     branches: ["main"]
 
@@ -31,3 +33,11 @@ jobs:
 
       - name: Run tests
         run: flutter test
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()    # run this step even if previous step failed
+        with:
+          name: Flutter Unit Test            # Name of the check run which will be created
+          path: reports/test-*.json    # Path to test results
+          reporter: flutter-json        # Format of test results
