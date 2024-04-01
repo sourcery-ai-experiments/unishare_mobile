@@ -30,7 +30,7 @@ void main() {
     expect(find.byType(LoginPage), findsOneWidget);
 
     // Simulate tapping the system back button
-    await tester.pageBack(); // This simulates tapping the system back button
+    await tester.tap(find.byType(IconButton));
     await tester.pumpAndSettle();
     expect(find.text("Masuk"), findsOneWidget);
     expect(find.text("Daftar Akun"), findsOneWidget);

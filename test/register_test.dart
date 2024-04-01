@@ -5,6 +5,7 @@ import 'package:unishare/app/modules/auth/register/controller/register_controlle
 import 'package:firebase_core/firebase_core.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
+import 'package:unishare/app/modules/onboarding/views/onboarding_screen.dart';
 import 'package:unishare/widgets/primary_button.dart';
 import 'mock.dart';
 import 'package:mockito/mockito.dart';
@@ -73,6 +74,25 @@ void main() {
           await tester.pumpAndSettle();
           expect(find.byType(HomeScreen), findsOneWidget);
         });
+
+    testWidgets('Back button on Register screen navigates to OnboardingScreen', (WidgetTester tester) async {
+      // Build the RegisterPage widget
+      await tester.pumpWidget(MaterialApp(
+        routes: {
+          '/': (context) => const OnboardingScreen(),
+          '/register': (context) => const RegisterPage(),
+        },
+        initialRoute: '/register',
+      ));
+
+      // Tap on the back button in the app bar
+      await tester.tap(find.byType(IconButton));
+      await tester.pumpAndSettle();
+
+      // Verify that the OnboardingScreen is displayed
+      expect(find.byType(OnboardingScreen), findsOneWidget);
+    });
+
 
   });
 

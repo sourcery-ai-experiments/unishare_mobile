@@ -54,10 +54,19 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: const Text(
           'Masuk Akun',
           style: TextStyle(
-              fontFamily: 'Rubik', fontWeight: FontWeight.w500, fontSize: 20.0),
+            fontFamily: 'Rubik',
+            fontWeight: FontWeight.w500,
+            fontSize: 20.0,
+          ),
         ),
         centerTitle: true,
       ),

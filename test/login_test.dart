@@ -7,6 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:unishare/app/modules/auth/login/controller/login_controller.dart';
 import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
+import 'package:unishare/app/modules/onboarding/views/onboarding_screen.dart';
 import 'package:unishare/widgets/google_button.dart';
 import 'package:unishare/widgets/primary_button.dart';
 
@@ -114,8 +115,24 @@ void main() {
       expect(find.byType(LoginPage), findsOneWidget);
     });
 
+    testWidgets('Back button on Login screen navigates to OnboardingScreen', (WidgetTester tester) async {
+      // Build the RegisterPage widget
+      await tester.pumpWidget(MaterialApp(
+        routes: {
+          '/': (context) => const OnboardingScreen(),
+          '/login': (context) => const LoginPage(),
+        },
+        initialRoute: '/login',
+      ));
+
+      // Tap on the back button in the app bar
+      await tester.tap(find.byType(IconButton));
+      await tester.pumpAndSettle();
+
+      // Verify that the OnboardingScreen is displayed
+      expect(find.byType(OnboardingScreen), findsOneWidget);
+    });
+
 
   });
 }
-
-class FakeUser extends Fake implements User {}
