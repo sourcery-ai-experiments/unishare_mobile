@@ -1,15 +1,41 @@
-import 'package:unishare/widgets/datextfield.dart';
+import 'package:unishare/app/modules/admin/acara/controller/acara_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:unishare/models/acara_post.dart';
 
-class MakeAcaraPost extends StatelessWidget {
-  const MakeAcaraPost({Key? key});
+class MakeAcaraPost extends StatefulWidget {
+  const MakeAcaraPost({super.key});
+
+  @override
+  _MakeAcaraPostState createState() => _MakeAcaraPostState();
+}
+
+class _MakeAcaraPostState extends State<MakeAcaraPost> {
+
+  final TextEditingController _judulController = TextEditingController();
+  final TextEditingController _penyelenggaraController = TextEditingController();
+  final TextEditingController _urlAcaraController = TextEditingController();
+  final TextEditingController _deskripsiController = TextEditingController();
+
+  final List<String> _temaList = ["Teknologi", "Marketing", "Desain", "Bisnis", "Sains"];
+  late String _selectedTema= _temaList[0];// Default selection
+
+  final List<String> _kategoriList = ["Kompetisi", "Bootcamp", "Seminar"];
+  late String _selectedKategori = _kategoriList[0];
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedTema = _temaList[0];
+    _selectedKategori = _kategoriList[0];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Buat Karir',
+          'Buat Acara',
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -27,14 +53,20 @@ class MakeAcaraPost extends StatelessWidget {
             ),
             // judul
             const Text(
-              'Judul Karir',
+              'Judul Acara',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const DaTextField(
-              hintText: 'Masukkan Judul Karir',
+            TextFormField(
+              controller: _judulController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Judul tidak boleh kosong';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 20),
 
@@ -46,8 +78,14 @@ class MakeAcaraPost extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const DaTextField(
-              hintText: 'Masukkan Nama Instansi Penyelenggara',
+            TextFormField(
+              controller: _penyelenggaraController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Penyelenggara tidak boleh kosong';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 20),
 
@@ -59,8 +97,14 @@ class MakeAcaraPost extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const DaTextField(
-              hintText: 'Masukkan Link Acara',
+            TextFormField(
+              controller: _urlAcaraController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Link Acara tidak boleh kosong';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 20),
 
@@ -72,16 +116,14 @@ class MakeAcaraPost extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            MyDropdownButton(
-              dropdownValue: 'teknologi',
-              items: const [
-                'teknologi',
-                'sains',
-                'bisnis',
-                'desain',
-                'fotografi',
-                'manajemen'
-              ],
+            DropdownButtonFormField<String>(
+              value: _selectedTema,
+              hint: const Text('Pilih Tema'),
+              items: _temaList.map((tema) => DropdownMenuItem<String>(
+                value: tema,
+                child: Text(tema),
+              )).toList(),
+              onChanged: (value) => setState(() => _selectedTema = value!),
             ),
             const SizedBox(height: 20),
 
@@ -93,9 +135,14 @@ class MakeAcaraPost extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            MyDropdownButton(
-              dropdownValue: 'kompetisi',
-              items: const ['kompetisi', 'workshop', 'seminar'],
+            DropdownButtonFormField<String>(
+              value: _selectedKategori,
+              hint: const Text('Pilih Kategori'),
+              items: _kategoriList.map((kategori) => DropdownMenuItem<String>(
+                value: kategori,
+                child: Text(kategori),
+              )).toList(),
+              onChanged: (value) => setState(() => _selectedKategori = value!),
             ),
             const SizedBox(height: 20),
 
@@ -123,28 +170,39 @@ class MakeAcaraPost extends StatelessWidget {
 
             //deskripsi acara
             const Text(
-              'Link Acara',
+              'Deskripsi Acara',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const DaTextField(
-              hintText: 'Masukkan Link Acara',
+            TextFormField(
+              controller: _deskripsiController,
+              maxLines: null, // Allow for multi-line input
             ),
             const SizedBox(height: 20),
 
             ElevatedButton(
-              style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(
-                  Color.fromRGBO(247, 86, 0, 1),
-                ),padding: MaterialStatePropertyAll(EdgeInsets.only(left: 150, right: 150, top: 15, bottom: 15), )
-              ),
               onPressed: () {
-                // Tambahkan logika untuk mengirim formulir
+                // Defer the validation until after the build method
+                Future.delayed(Duration.zero, () {
+                  AcaraPost acaraPost = AcaraPost(
+                    judul: _judulController.text,
+                    penyelenggara: _penyelenggaraController.text,
+                    urlAcara: _selectedTema,
+                    img: "/img/Wzrd.jpg",
+                    guidebook: "/img/guidebook.pdf",
+                    deskripsi: _deskripsiController.text,
+                    startDate: Timestamp.now(),
+                    endDate: Timestamp.now(),
+                  );
+                  AcaraService.addToFirestore(context, acaraPost);
+
+                });
               },
-              child: const Text('Unggah', style: TextStyle(color: Colors.white),),
+              child: const Text('Unggah', style: TextStyle(color: Colors.black87)),
             ),
+
             const SizedBox(height: 20),
           ],
         ),

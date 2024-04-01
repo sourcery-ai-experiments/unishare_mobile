@@ -8,7 +8,8 @@ import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final LoginService? loginService;
+  const LoginPage({super.key, this.loginService});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -17,9 +18,16 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final LoginService _loginService = LoginService();
-
+  
+  late final LoginService _loginService;
   final Logger _logger = Logger();
+
+  @override
+  void initState() {
+    super.initState();
+    _loginService = widget.loginService ?? LoginService(); // Or provide your default RegisterService constructor
+
+  }
 
   Future<void> _login() async {
     final email = _emailController.text.trim();
@@ -29,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    final user = await _loginService .signInWithEmailAndPassword(email, password);
+    final user = await _loginService.signInWithEmailAndPassword(email, password);
     if (user != null) {
       _logger.i("Login successful");
        Navigator.pushReplacement(
@@ -68,6 +76,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 40.0),
               TextField(
                 controller: _emailController,
+                key: Key("email-field"),
                 decoration: const InputDecoration(
                   labelText: 'Masukkan Email address',
                   border: UnderlineInputBorder(),
@@ -76,6 +85,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20.0),
               TextField(
                 controller: _passwordController,
+                key: Key("password-field"),
                 obscureText: true,
                 decoration: const InputDecoration(
                   labelText: 'Masukkan Password',
