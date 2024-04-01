@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../homescreen/home_screen.dart';
 // import 'package:intl/intl.dart';
 
 class NotificationPage extends StatelessWidget {
@@ -24,7 +26,17 @@ class NotificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+        ),
+      ),
       backgroundColor: const Color(0xFFF6F7FF),
       body: ListView.separated(
           padding: EdgeInsets.all(20),

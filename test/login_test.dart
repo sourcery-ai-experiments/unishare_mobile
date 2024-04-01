@@ -87,7 +87,7 @@ void main() {
           expect(find.byType(HomeScreen), findsOneWidget);
         });
 
-    testWidgets('Shows error message when login fails', (WidgetTester tester) async {
+    testWidgets('Stay on login page message when login fails', (WidgetTester tester) async {
       FlutterError.onError = ignoreOverflowErrors;
 
       // Create a mock LoginService
