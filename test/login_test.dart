@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:unishare/app/modules/auth/login/controller/login_controller.dart';
 import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
+import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
 import 'package:unishare/app/modules/onboarding/views/onboarding_screen.dart';
 import 'package:unishare/widgets/google_button.dart';
@@ -133,6 +134,20 @@ void main() {
       expect(find.byType(OnboardingScreen), findsOneWidget);
     });
 
+    testWidgets('Register text button navigates to register page', (WidgetTester tester) async {
+      await tester.pumpWidget(const MaterialApp(
+        home: LoginPage(),
+      ));
+
+      await tester.ensureVisible(find.byKey(Key("register-text-button")));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(Key("register-text-button")));
+      await tester.pumpAndSettle();
+
+      // Verify that the HomeScreen is displayed
+      expect(find.text("Atau daftar menggunakan"), findsOneWidget);
+      expect(find.byType(RegisterPage), findsOneWidget);
+    });
 
   });
 }

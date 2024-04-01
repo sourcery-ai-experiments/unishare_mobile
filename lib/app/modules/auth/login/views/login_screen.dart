@@ -158,6 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                   const Text('Belum punya akun?'),
                   const SizedBox(width: 10.0),
                   GestureDetector(
+                    key: Key("register-text-button"),
                     onTap: () {
                       Navigator.push(
                         context,
