@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../homescreen/home_screen.dart';
 import 'lowongan_kerja.dart';
 import 'magang.dart';
 
@@ -23,6 +24,12 @@ class _KarirPageState extends State<KarirPage> {
       initialIndex: _selectedIndex,
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           title: const Text(
             'Karir',
             style: TextStyle(

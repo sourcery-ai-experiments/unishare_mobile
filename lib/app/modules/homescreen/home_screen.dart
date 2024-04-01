@@ -47,18 +47,22 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         destinations: [
           NavigationDestination(
+              key: const Key("home-navbar-button"),
               icon: SvgPicture.asset('assets/icons/home-outlined.svg'),
               selectedIcon: SvgPicture.asset('assets/icons/home-filled.svg'),
               label: "Home"),
           NavigationDestination(
+              key: const Key("karir-navbar-button"),
               icon: SvgPicture.asset('assets/icons/karir-outlined.svg'),
               selectedIcon: SvgPicture.asset('assets/icons/karir-filled.svg'),
               label: "Karir"),
           NavigationDestination(
+              key: const Key("acara-navbar-button"),
               icon: SvgPicture.asset('assets/icons/acara-outlined.svg'),
               selectedIcon: SvgPicture.asset('assets/icons/acara-filled.svg'),
               label: "Acara"),
           NavigationDestination(
+              key: const Key("profil-navbar-button"),
               icon: SvgPicture.asset('assets/icons/profile-outlined.svg'),
               selectedIcon: SvgPicture.asset('assets/icons/profile-filled.svg'),
               label: "Profil"),
