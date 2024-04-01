@@ -12,7 +12,7 @@ void main() async {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(
-      body: AdminHomePage(),
+      body: SplashScreen(),
     ),
   ));
 }
