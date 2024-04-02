@@ -42,7 +42,7 @@ dependencies:
   fl_chart: ^0.66.2
   syncfusion_flutter_datepicker: ^25.1.37
   textfield_datepicker: ^0.2.0
-  intl: ^0.19.0
+  intl: ^0.18.1
   mockito: ^5.0.8
 
 dev_dependencies:

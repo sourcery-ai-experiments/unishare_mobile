@@ -1,4 +1,4 @@
-name: Integration Testing
+name: Continuous Integration & Test Report
 
 on: [push, pull_request]
 
@@ -12,21 +12,29 @@ jobs:
     name: Build & Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 # checkout the repo
+      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           channel: "beta" # or: 'beta', 'dev', 'master' (or 'main')
 
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Run tests
-        run: flutter test
-
+      - name: Install and run tests
+        run: |
+          flutter pub get
+          flutter pub upgrade
+          flutter test --coverage
       - name: Test Report
         uses: dorny/test-reporter@v1
-        if: success() || failure()    # run this step even if previous step failed
+        if: success() || failure() # run this step even if previous step failed
         with:
-          name: Flutter Unit Test            # Name of the check run which will be created
-          path: reports/test-*.json    # Path to test results
-          reporter: flutter-json        # Format of test results
+          name: Flutter Unit Test
+          path: reports/test-*.json
+          reporter: flutter-json
+
+      - name: Generate Test Coverage report
+        run: flutter test --coverage --machine > coverage.json
+
+      - uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage.json
+          slug: W-zrd/unishare_mobile
