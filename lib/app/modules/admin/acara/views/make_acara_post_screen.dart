@@ -17,6 +17,8 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
   final TextEditingController _penyelenggaraController = TextEditingController();
   final TextEditingController _urlAcaraController = TextEditingController();
   final TextEditingController _deskripsiController = TextEditingController();
+  String? _img = '';
+  String? _guidebook = '';
 
   final List<String> _temaList = ["Teknologi", "Marketing", "Desain", "Bisnis", "Sains"];
   late String _selectedTema= _temaList[0];// Default selection
@@ -149,13 +151,17 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
 
             //guidebook
             FileInputWidget(
-              fileType: 'Guidebook',),
+              fileType: 'Guidebook', onSaveToDatabase: (guidebook){
+                _guidebook = guidebook;
+              },),
 
             const SizedBox(height: 10),
 
             //banner acara
             FileInputWidget(
-              fileType: 'Banner Acara',),
+              fileType: 'Banner Acara',onSaveToDatabase:(img){
+                _img = img;
+              } ,),
 
             const SizedBox(height: 10),
 
@@ -181,8 +187,8 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
                     judul: _judulController.text,
                     penyelenggara: _penyelenggaraController.text,
                     urlAcara: _selectedTema,
-                    img: "/img/Wzrd.jpg",
-                    guidebook: "FileInputWidgetState()._filePath",
+                    img: _img ,
+                    guidebook: _guidebook ,
                     deskripsi: _deskripsiController.text,
                     startDate: Timestamp.now(),
                     endDate: Timestamp.now(),
