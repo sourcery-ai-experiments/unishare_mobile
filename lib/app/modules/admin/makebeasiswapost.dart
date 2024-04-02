@@ -102,6 +102,18 @@ class MakeBeasiswaPost extends StatelessWidget {
               ),
             ),
 
+            TextField(
+              decoration: InputDecoration(
+                filled: true,
+                prefixIcon: Icon(Icons.calendar_today),
+                enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
+              ),
+              readOnly: true,
+              onTap: () {
+                // _selectDate();
+              },
+            ),
+
             const SizedBox(height: 20),
 
             ElevatedButton(
@@ -117,6 +129,45 @@ class MakeBeasiswaPost extends StatelessWidget {
     );
   }
 }
+
+// class DatePickerField extends StatefulWidget {
+//   final Function(DateTime) onDateSelected; // Callback for selected date
+//   final DateTime initialDate; // Optional initial date to display (default: now)
+
+//   const DatePickerField({
+//     super.key,
+//     required this.onDateSelected,
+//     this.initialDate = DateTime.now(),
+//   });
+
+//   @override
+//   State<DatePickerField> createState() => _DatePickerFieldState();
+// }
+
+// class _DatePickerFieldState extends State<DatePickerField> {
+//   DateTime _selectedDate = DateTime.now();
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _selectedDate = widget.initialDate; // Set initial date from widget
+//   }
+
+//   Future<void> _selectDate() async {
+//     final DateTime? picked = await showDatePicker(
+//       context: context,
+//       initialDate: _selectedDate,
+//       firstDate: DateTime(2000),
+//       lastDate: DateTime(2100),
+//     );
+//     if (picked != null && picked != _selectedDate) {
+//       setState(() {
+//         _selectedDate = picked;
+//       });
+//       widget.onDateSelected(_selectedDate); // Call callback with selected date
+//     }
+//   }
+// }
 
 // ignore: must_be_immutable
 class MyDropdownButton extends StatefulWidget {
