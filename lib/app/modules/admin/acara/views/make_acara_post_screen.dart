@@ -12,16 +12,26 @@ class MakeAcaraPost extends StatefulWidget {
 }
 
 class _MakeAcaraPostState extends State<MakeAcaraPost> {
-
   final TextEditingController _judulController = TextEditingController();
-  final TextEditingController _penyelenggaraController = TextEditingController();
+  final TextEditingController _penyelenggaraController =
+      TextEditingController();
   final TextEditingController _urlAcaraController = TextEditingController();
   final TextEditingController _deskripsiController = TextEditingController();
+  final TextEditingController _lokasiController = TextEditingController();
+
   String? _img = '';
   String? _guidebook = '';
+  DateTime? _startDate;
+  DateTime? _endDate;
 
-  final List<String> _temaList = ["Teknologi", "Marketing", "Desain", "Bisnis", "Sains"];
-  late String _selectedTema= _temaList[0];// Default selection
+  final List<String> _temaList = [
+    "Teknologi",
+    "Marketing",
+    "Desain",
+    "Bisnis",
+    "Sains"
+  ];
+  late String _selectedTema = _temaList[0]; // Default selection
 
   final List<String> _kategoriList = ["Kompetisi", "Bootcamp", "Seminar"];
   late String _selectedKategori = _kategoriList[0];
@@ -91,7 +101,24 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
               },
             ),
             const SizedBox(height: 20),
-
+            //Lokasi
+            const Text(
+              'Lokasi',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            TextFormField(
+              controller: _lokasiController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Lokasi tidak boleh kosong';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 20),
             //link acara
             const Text(
               'Link Acara',
@@ -122,10 +149,12 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
             DropdownButtonFormField<String>(
               value: _selectedTema,
               hint: const Text('Pilih Tema'),
-              items: _temaList.map((tema) => DropdownMenuItem<String>(
-                value: tema,
-                child: Text(tema),
-              )).toList(),
+              items: _temaList
+                  .map((tema) => DropdownMenuItem<String>(
+                        value: tema,
+                        child: Text(tema),
+                      ))
+                  .toList(),
               onChanged: (value) => setState(() => _selectedTema = value!),
             ),
             const SizedBox(height: 20),
@@ -141,27 +170,33 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
             DropdownButtonFormField<String>(
               value: _selectedKategori,
               hint: const Text('Pilih Kategori'),
-              items: _kategoriList.map((kategori) => DropdownMenuItem<String>(
-                value: kategori,
-                child: Text(kategori),
-              )).toList(),
+              items: _kategoriList
+                  .map((kategori) => DropdownMenuItem<String>(
+                        value: kategori,
+                        child: Text(kategori),
+                      ))
+                  .toList(),
               onChanged: (value) => setState(() => _selectedKategori = value!),
             ),
             const SizedBox(height: 20),
 
             //guidebook
             FileInputWidget(
-              fileType: 'Guidebook', onSaveToDatabase: (guidebook){
+              fileType: 'Guidebook',
+              onSaveToDatabase: (guidebook) {
                 _guidebook = guidebook;
-              },),
+              },
+            ),
 
             const SizedBox(height: 10),
 
             //banner acara
             FileInputWidget(
-              fileType: 'Banner Acara',onSaveToDatabase:(img){
+              fileType: 'Banner Acara',
+              onSaveToDatabase: (img) {
                 _img = img;
-              } ,),
+              },
+            ),
 
             const SizedBox(height: 10),
 
@@ -173,9 +208,83 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            TextFormField( 
+            TextFormField(
               controller: _deskripsiController,
               maxLines: null, // Allow for multi-line input
+            ),
+            const SizedBox(height: 20),
+
+            // Start Date
+            const Text(
+              'Tanggal Mulai',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: () async {
+                      final DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2000),
+                        lastDate: DateTime(2100),
+                      );
+                      if (pickedDate != null) {
+                        setState(() {
+                          _startDate = pickedDate;
+                        });
+                      }
+                    },
+                    icon: Icon(Icons.calendar_today),
+                    label: Text(
+                      _startDate != null
+                          ? '${_startDate!.day}/${_startDate!.month}/${_startDate!.year}'
+                          : 'Pilih Tanggal',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+
+            // End Date
+            const Text(
+              'Tanggal Selesai',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: () async {
+                      final DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2000),
+                        lastDate: DateTime(2100),
+                      );
+                      if (pickedDate != null) {
+                        setState(() {
+                          _endDate = pickedDate;
+                        });
+                      }
+                    },
+                    icon: Icon(Icons.calendar_today),
+                    label: Text(
+                      _endDate != null
+                          ? '${_endDate!.day}/${_endDate!.month}/${_endDate!.year}'
+                          : 'Pilih Tanggal',
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
 
@@ -187,17 +296,19 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
                     judul: _judulController.text,
                     penyelenggara: _penyelenggaraController.text,
                     urlAcara: _selectedTema,
-                    img: _img ,
-                    guidebook: _guidebook ,
+                    img: _img,
+                    kategori: _selectedKategori,
+                    lokasi: _lokasiController.text,
+                    guidebook: _guidebook,
                     deskripsi: _deskripsiController.text,
-                    startDate: Timestamp.now(),
-                    endDate: Timestamp.now(),
+                    startDate: Timestamp.fromDate(_startDate!),
+                    endDate: Timestamp.fromDate(_endDate!),
                   );
                   AcaraService.addToFirestore(context, acaraPost);
-
                 });
               },
-              child: const Text('Unggah', style: TextStyle(color: Colors.black87)),
+              child:
+                  const Text('Unggah', style: TextStyle(color: Colors.black87)),
             ),
 
             const SizedBox(height: 20),

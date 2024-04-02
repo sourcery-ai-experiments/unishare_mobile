@@ -5,7 +5,7 @@ import 'package:unishare/app/modules/homescreen/home_screen.dart';
 import 'package:unishare/app/widgets/button/google_button.dart';
 import 'package:unishare/app/widgets/button/primary_button.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
-import 'package:unishare/app/modules/admin/dashboard_admin.dart';
+import 'package:unishare/app/modules/admin/dashboard/views/dashboard_admin.dart';
 
 class LoginPage extends StatefulWidget {
   final AuthService? loginService;
