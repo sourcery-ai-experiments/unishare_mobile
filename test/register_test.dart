@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:unishare/app/modules/auth/register/controller/register_controller.dart';
+import 'package:unishare/app/modules/auth/controller/auth_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
@@ -13,7 +13,7 @@ import 'package:mockito/mockito.dart';
 
 import 'test_helper.dart';
 
-class MockRegisterService extends Mock implements RegisterService {
+class MockRegisterService extends Mock implements AuthService {
   @override
   Future<User?> registerUser(String email, String password, String displayName) async {
     // Always return a successful MockUser instance

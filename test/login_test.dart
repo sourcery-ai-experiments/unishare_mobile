@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:unishare/app/modules/auth/login/controller/login_controller.dart';
+import 'package:unishare/app/modules/auth/controller/auth_controller.dart';
 import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
@@ -15,7 +15,7 @@ import 'package:unishare/widgets/primary_button.dart';
 import 'mock.dart';
 import 'test_helper.dart';
 
-class MockLoginService extends Mock implements LoginService {
+class MockLoginService extends Mock implements AuthService {
   @override
   Future<User?> signInWithEmailAndPassword(String email, String password) {
     return super.noSuchMethod(

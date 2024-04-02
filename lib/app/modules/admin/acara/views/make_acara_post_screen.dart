@@ -1,7 +1,7 @@
 import 'package:unishare/app/modules/admin/acara/controller/acara_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:unishare/models/acara_post.dart';
+import 'package:unishare/models/acara_kemahasiswaan.dart';
 
 class MakeAcaraPost extends StatefulWidget {
   const MakeAcaraPost({super.key});
@@ -186,7 +186,7 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
               onPressed: () {
                 // Defer the validation until after the build method
                 Future.delayed(Duration.zero, () {
-                  AcaraPost acaraPost = AcaraPost(
+                  AcaraKemahasiswaan acaraPost = AcaraKemahasiswaan(
                     judul: _judulController.text,
                     penyelenggara: _penyelenggaraController.text,
                     urlAcara: _selectedTema,
