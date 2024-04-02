@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../homescreen/home_screen.dart';
-// import 'package:intl/intl.dart';
 
-class NotificationPage extends StatelessWidget {
-  const NotificationPage({super.key});
-  // const String constantDateTimeString = "2024-03-26 13:22";
+class BeasiswaScreen extends StatelessWidget {
+  const BeasiswaScreen({super.key});
 
   final List<Map<String, dynamic>> content = const [
     {
-      "icon": Icon(Icons.email),
-      "title": "Ubah password akun",
-      "desc": "Password anda telah berhasil diubah!",
-      // "time": Text(DateFormat('hh:mm a').format(DateTime.now())),
+      // "image": AssetImage('assets/img/defaultimage.png'),
+      "title": "Bright YBM BRILiaN",
+      "jenis": "Swasta",
+      // "deadline": tanggal
+      "penyelenggara": "YBM BRILiaN"
     },
     {
-      "icon": Icon(Icons.shield),
-      "title": "Kompetisi : JOINTS CTF UGM",
-      "desc": "Sertifikat juara telah dikirim via Email ketua!",
-      // "time": (constantDateTimeString).toString().substring(11, 16),
+      // "image": AssetImage('assets/img/defaultimage.png'),
+      "title": "Beasiswa Surabaya",
+      "jenis": "Pemerintah",
+      // "deadline": tanggal
+      "penyelenggara": "Pemerintah Kota Surabaya"
     },
   ];
 
@@ -28,7 +27,7 @@ class NotificationPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Notifikasi',
+          'Beasiswa',
           style: TextStyle(
             fontFamily: 'Rubik',
             fontSize: 18,
@@ -57,12 +56,37 @@ class NotificationPage extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              leading: CircleAvatar(
-                backgroundColor: Color(0xFFFEEACB),
-                child: content[index]["icon"],
+              // leading: Image(image: content[index]["image"]),
+              title: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Positioned(
+                      child: Text(
+                        content[index]["jenis"], // Replace with your data key
+                        style: const TextStyle(
+                          color: Colors.orange, // Set the desired orange color
+                          fontSize: 12.0, // Adjust font size as needed
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Title below the orange text
+                  Align(
+                    alignment:
+                        Alignment.centerLeft, // Or adjust alignment as needed
+                    child: Text(
+                      content[index]["title"],
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(height: 8.0),
+                ],
               ),
-              title: Text(content[index]["title"]),
-              subtitle: Text(content[index]["desc"]),
+              subtitle: Text('Deadline: ...\n' +
+                  'Penyelenggara: ' +
+                  content[index]["penyelenggara"]),
+              isThreeLine: true,
             );
           }),
     );
