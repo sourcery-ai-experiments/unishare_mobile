@@ -6,7 +6,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:unishare/app/modules/auth/login/controller/login_controller.dart';
 import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
+import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
+import 'package:unishare/app/modules/onboarding/views/onboarding_screen.dart';
 import 'package:unishare/widgets/google_button.dart';
 import 'package:unishare/widgets/primary_button.dart';
 
@@ -85,7 +87,7 @@ void main() {
           expect(find.byType(HomeScreen), findsOneWidget);
         });
 
-    testWidgets('Shows error message when login fails', (WidgetTester tester) async {
+    testWidgets('Stay on login page message when login fails', (WidgetTester tester) async {
       FlutterError.onError = ignoreOverflowErrors;
 
       // Create a mock LoginService
@@ -114,8 +116,38 @@ void main() {
       expect(find.byType(LoginPage), findsOneWidget);
     });
 
+    testWidgets('Back button on Login screen navigates to OnboardingScreen', (WidgetTester tester) async {
+      // Build the RegisterPage widget
+      await tester.pumpWidget(MaterialApp(
+        routes: {
+          '/': (context) => const OnboardingScreen(),
+          '/login': (context) => const LoginPage(),
+        },
+        initialRoute: '/login',
+      ));
+
+      // Tap on the back button in the app bar
+      await tester.tap(find.byType(IconButton));
+      await tester.pumpAndSettle();
+
+      // Verify that the OnboardingScreen is displayed
+      expect(find.byType(OnboardingScreen), findsOneWidget);
+    });
+
+    testWidgets('Register text button navigates to register page', (WidgetTester tester) async {
+      await tester.pumpWidget(const MaterialApp(
+        home: LoginPage(),
+      ));
+
+      await tester.ensureVisible(find.byKey(Key("register-text-button")));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(Key("register-text-button")));
+      await tester.pumpAndSettle();
+
+      // Verify that the HomeScreen is displayed
+      expect(find.text("Atau daftar menggunakan"), findsOneWidget);
+      expect(find.byType(RegisterPage), findsOneWidget);
+    });
 
   });
 }
-
-class FakeUser extends Fake implements User {}

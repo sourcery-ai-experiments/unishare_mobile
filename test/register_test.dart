@@ -5,6 +5,8 @@ import 'package:unishare/app/modules/auth/register/controller/register_controlle
 import 'package:firebase_core/firebase_core.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
+import 'package:unishare/app/modules/onboarding/views/onboarding_screen.dart';
+import 'package:unishare/widgets/google_button.dart';
 import 'package:unishare/widgets/primary_button.dart';
 import 'mock.dart';
 import 'package:mockito/mockito.dart';
@@ -32,6 +34,18 @@ void main() {
     setUpAll(() async {
       await Firebase.initializeApp();
       mockRegisterService = MockRegisterService();
+    });
+
+    testWidgets('Renders Register Page correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(const MaterialApp(home: RegisterPage()));
+
+      expect(find.byType(Image), findsOneWidget);
+      expect(find.byType(TextField), findsExactly(3));
+      expect(find.byType(PrimaryButton), findsOneWidget);
+
+      expect(find.text('Masukkan Nama Lengkap'), findsOneWidget);
+      expect(find.text('Masukkan Email Address'), findsOneWidget);
+      expect(find.text('Daftar Akun'), findsAtLeastNWidgets(1));
     });
 
     testWidgets('Check if the user cant register with blank text fields', (WidgetTester tester) async {
@@ -73,6 +87,25 @@ void main() {
           await tester.pumpAndSettle();
           expect(find.byType(HomeScreen), findsOneWidget);
         });
+
+    testWidgets('Back button on Register screen navigates to OnboardingScreen', (WidgetTester tester) async {
+      // Build the RegisterPage widget
+      await tester.pumpWidget(MaterialApp(
+        routes: {
+          '/': (context) => const OnboardingScreen(),
+          '/register': (context) => const RegisterPage(),
+        },
+        initialRoute: '/register',
+      ));
+
+      // Tap on the back button in the app bar
+      await tester.tap(find.byType(IconButton));
+      await tester.pumpAndSettle();
+
+      // Verify that the OnboardingScreen is displayed
+      expect(find.byType(OnboardingScreen), findsOneWidget);
+    });
+
 
   });
 

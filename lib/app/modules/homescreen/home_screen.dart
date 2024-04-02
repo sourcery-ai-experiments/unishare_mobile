@@ -21,48 +21,78 @@ class _HomeScreenState extends State<HomeScreen> {
     const AcaraPage(),
   ];
 
+  Future<bool> _onWillPop() async {
+    // Handle the system back button press based on the current page index
+    if (currentPageIndex == 0) {
+      // If on the Dashboard, allow the default back navigation behavior
+      return true;
+    } else {
+      // If on any other page, navigate back to the Dashboard
+      setState(() {
+        currentPageIndex = 0;
+        _pageController.animateToPage(
+          0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.ease,
+        );
+      });
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        children: _pages,
-      ),
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: Colors.white,
-        height: 74,
-        selectedIndex: currentPageIndex,
-        indicatorColor: const Color.fromRGBO(217, 217, 217, 1),
-        onDestinationSelected: (int index) {
-          _pageController.animateToPage(
-            index,
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.ease,
-          );
-        },
-        destinations: [
-          NavigationDestination(
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        body: PageView(
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              currentPageIndex = index;
+            });
+          },
+          children: _pages,
+        ),
+        bottomNavigationBar: NavigationBar(
+          backgroundColor: Colors.white,
+          height: 74,
+          selectedIndex: currentPageIndex,
+          indicatorColor: const Color.fromRGBO(217, 217, 217, 1),
+          onDestinationSelected: (int index) {
+            _pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.ease,
+            );
+          },
+          destinations: [
+            NavigationDestination(
+              key: const Key("home-navbar-button"),
               icon: SvgPicture.asset('assets/icons/home-outlined.svg'),
               selectedIcon: SvgPicture.asset('assets/icons/home-filled.svg'),
-              label: "Home"),
-          NavigationDestination(
+              label: "Home",
+            ),
+            NavigationDestination(
+              key: const Key("karir-navbar-button"),
               icon: SvgPicture.asset('assets/icons/karir-outlined.svg'),
               selectedIcon: SvgPicture.asset('assets/icons/karir-filled.svg'),
-              label: "Karir"),
-          NavigationDestination(
+              label: "Karir",
+            ),
+            NavigationDestination(
+              key: const Key("acara-navbar-button"),
               icon: SvgPicture.asset('assets/icons/acara-outlined.svg'),
               selectedIcon: SvgPicture.asset('assets/icons/acara-filled.svg'),
-              label: "Acara"),
-          NavigationDestination(
+              label: "Acara",
+            ),
+            NavigationDestination(
+              key: const Key("profil-navbar-button"),
               icon: SvgPicture.asset('assets/icons/profile-outlined.svg'),
               selectedIcon: SvgPicture.asset('assets/icons/profile-filled.svg'),
-              label: "Profil"),
-        ],
+              label: "Profil",
+            ),
+          ],
+        ),
       ),
     );
   }

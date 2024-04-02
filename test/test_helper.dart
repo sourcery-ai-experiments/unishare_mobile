@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 
 void ignoreOverflowErrors(
@@ -17,7 +19,9 @@ void ignoreOverflowErrors(
   }// Ignore if is overflow error.
   if (ifIsOverflowError || isUnableToLoadAsset) {
     //debugPrint('Ignored Error');
+
   } else {
     FlutterError.dumpErrorToConsole(details, forceReport: forceReport);
+    exit(1);
   }
 }
