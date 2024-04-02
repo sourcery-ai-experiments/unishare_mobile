@@ -3,7 +3,7 @@ import 'package:unishare/app/modules/auth/controller/auth_controller.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
 import 'package:unishare/widgets/primary_button.dart';
 import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
-import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
+import 'package:unishare/widgets/google_button.dart';
 import 'package:logger/logger.dart';
 
 
@@ -140,19 +140,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 20.0),
+             const SizedBox(height: 20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.white,
-                      minimumSize: const Size(150.0, 50.0),
-                    ),
-                    icon: const Icon(Icons.g_mobiledata, color: Colors.blue),
-                    label: const Text('Google'),
-                  ),
+                  const GoogleButton(),
                   ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
