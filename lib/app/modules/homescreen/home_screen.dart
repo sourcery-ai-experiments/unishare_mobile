@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:unishare/app/modules/acara_kemahasiswaan/view/acara_page.dart';
+import 'package:unishare/app/modules/acara/view/acara_page.dart';
 import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
 import 'package:unishare/app/modules/karir/karir_page.dart';
 

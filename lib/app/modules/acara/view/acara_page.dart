@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/app/modules/acara_kemahasiswaan/view/acara_all.dart';
-import 'package:unishare/app/modules/acara_kemahasiswaan/view/kompetisi.dart';
-import 'package:unishare/app/modules/acara_kemahasiswaan/view/seminar.dart';
-import 'package:unishare/app/modules/acara_kemahasiswaan/view/workshop.dart';
+import 'package:unishare/app/modules/acara/view/acara_all.dart';
+import 'package:unishare/app/modules/acara/view/kompetisi.dart';
+import 'package:unishare/app/modules/acara/view/seminar.dart';
+import 'package:unishare/app/modules/acara/view/workshop.dart';
 
 import '../../homescreen/home_screen.dart';
 
