@@ -4,6 +4,8 @@ import 'package:unishare/app/modules/acara/kompetisi.dart';
 import 'package:unishare/app/modules/acara/seminar.dart';
 import 'package:unishare/app/modules/acara/workshop.dart';
 
+import '../homescreen/home_screen.dart';
+
 class AcaraPage extends StatefulWidget {
   const AcaraPage({super.key});
 
@@ -37,6 +39,15 @@ class _AcaraPageState extends State<AcaraPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+        ),
         title: const Text(
           'Acara',
           style: TextStyle(

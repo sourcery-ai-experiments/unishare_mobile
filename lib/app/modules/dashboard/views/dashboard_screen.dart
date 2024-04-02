@@ -12,7 +12,7 @@ class Dashboard extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     User? user = FirebaseAuth.instance.currentUser;
-    String fullname = user!.displayName!;
+    String fullname = user?.displayName ?? 'User';
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -168,6 +168,7 @@ class Dashboard extends StatelessWidget {
                               ),
                               // 3. jadwal
                               Padding(
+                                key: const Key("jadwal-icon-button"),
                                 padding: const EdgeInsets.only(right: 28),
                                 child: Column(
                                   children: [
@@ -222,6 +223,7 @@ class Dashboard extends StatelessWidget {
                             children: [
                               // 5. notifikasi
                               Padding(
+                                key: const Key("notifikasi-icon-button"),
                                 padding:
                                     const EdgeInsets.only(top: 12, right: 29),
                                 child: Column(

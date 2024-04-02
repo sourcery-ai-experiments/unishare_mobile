@@ -7,6 +7,7 @@ class RegisterService{
   final Logger logger = Logger();
 
   Future<User?> registerUser(String email, String password, String displayName) async {
+
     try {
       final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,

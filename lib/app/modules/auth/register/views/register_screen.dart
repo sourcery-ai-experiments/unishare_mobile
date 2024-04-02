@@ -6,8 +6,11 @@ import 'package:unishare/app/modules/auth/register/controller/register_controlle
 import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
 import 'package:logger/logger.dart';
 
+
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  final RegisterService? registerService;
+
+  const RegisterPage({super.key, this.registerService});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -17,28 +20,49 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _nameController = TextEditingController();
-  final RegisterService _registerService = RegisterService();
 
   final Logger _logger = Logger();
+  late final RegisterService _registerService;
+
+  @override
+  void initState() {
+    super.initState();
+    _registerService = widget.registerService ?? RegisterService(); // Or provide your default RegisterService constructor
+
+  }
 
   Future<void> _register() async {
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
     final displayName = _nameController.text.trim();
+
     if (email.isEmpty || password.isEmpty || displayName.isEmpty) {
       _logger.e("Email, password, or display name is empty");
       return;
     }
 
+    // Call the registerUser method and await for the result
     final user = await _registerService.registerUser(email, password, displayName);
+
+    // Check if the user is not null (registration successful)
     if (user != null) {
       _logger.i("Register successful");
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+
+      // Navigate to the HomeScreen using a MaterialPageRoute
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
+        ),
       );
     } else {
       _logger.w("Register failed");
+
+      // Show an error message or handle the registration failure
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Registration failed. Please try again.'),
+        ),
+      );
     }
   }
 
@@ -46,10 +70,19 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: const Text(
           'Daftar Akun',
           style: TextStyle(
-              fontFamily: 'Rubik', fontWeight: FontWeight.w500, fontSize: 20.0),
+            fontFamily: 'Rubik',
+            fontWeight: FontWeight.w500,
+            fontSize: 20.0,
+          ),
         ),
         centerTitle: true,
       ),
@@ -67,6 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 40.0),
               TextField(
+                key: const Key("fullname-field"),
                 controller: _nameController,
                 decoration: const InputDecoration(
                   labelText: 'Masukkan Nama Lengkap',
@@ -75,6 +109,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 40.0),
               TextField(
+                key: const Key("email-field"),
                 controller: _emailController,
                 decoration: const InputDecoration(
                   labelText: 'Masukkan Email Address',
@@ -83,6 +118,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 40.0),
               TextField(
+                key: const Key("password-field"),
                 controller: _passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(
