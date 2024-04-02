@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/widgets/achievement_card.dart';
-import 'package:unishare/widgets/achievement_logo.dart';
+
+import '../../widgets/achievement_card.dart';
+import '../../widgets/achievement_logo.dart';
 
 class LeaderboardPage extends StatelessWidget {
   const LeaderboardPage({super.key});

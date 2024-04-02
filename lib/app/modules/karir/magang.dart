@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/widgets/post.dart';
+import 'package:unishare/app/widgets/post.dart';
 
 class MagangPage extends StatelessWidget {
   const MagangPage({super.key});

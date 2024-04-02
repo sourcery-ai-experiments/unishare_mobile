@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/app/modules/acara/acara_all.dart';
-import 'package:unishare/app/modules/acara/kompetisi.dart';
-import 'package:unishare/app/modules/acara/seminar.dart';
-import 'package:unishare/app/modules/acara/workshop.dart';
+import 'package:unishare/app/modules/acara/view/acara_all.dart';
+import 'package:unishare/app/modules/acara/view/kompetisi.dart';
+import 'package:unishare/app/modules/acara/view/seminar.dart';
+import 'package:unishare/app/modules/acara/view/workshop.dart';
 
-import '../homescreen/home_screen.dart';
+import '../../homescreen/home_screen.dart';
 
 class AcaraPage extends StatefulWidget {
   const AcaraPage({super.key});

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:unishare/app/modules/auth/login/controller/login_controller.dart';
+import 'package:unishare/app/modules/auth/controller/auth_controller.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
-import 'package:unishare/widgets/google_button.dart';
-import 'package:unishare/widgets/primary_button.dart';
-import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
+import 'package:unishare/app/widgets/google_button.dart';
+import 'package:unishare/app/widgets/primary_button.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 
 class LoginPage extends StatefulWidget {
-  final LoginService? loginService;
+  final AuthService? loginService;
   const LoginPage({super.key, this.loginService});
 
   @override
@@ -19,13 +18,13 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   
-  late final LoginService _loginService;
+  late final AuthService _loginService;
   final Logger _logger = Logger();
 
   @override
   void initState() {
     super.initState();
-    _loginService = widget.loginService ?? LoginService(); // Or provide your default RegisterService constructor
+    _loginService = widget.loginService ?? AuthService(); // Or provide your default RegisterService constructor
 
   }
 

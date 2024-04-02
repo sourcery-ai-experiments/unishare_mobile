@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/widgets/date_button.dart';
-import 'package:unishare/widgets/date_card.dart';
+import 'package:unishare/app/widgets/date_button.dart';
+import 'package:unishare/app/widgets/date_card.dart';
 
 class JadwalPage extends StatelessWidget {
   const JadwalPage({super.key});

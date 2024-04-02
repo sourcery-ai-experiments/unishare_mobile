@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/widgets/milestone_checkbox.dart';
+
+import 'milestone_checkbox.dart';
 
 class MilestoneCard extends StatelessWidget {
   final bool isCheckedIn;

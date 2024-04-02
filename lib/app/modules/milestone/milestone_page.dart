@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/widgets/milestone_card.dart';
-import 'package:unishare/widgets/pencapaian_card.dart';
+
+import '../../widgets/milestone_card.dart';
+import '../../widgets/pencapaian_card.dart';
 
 class MilestonePage extends StatelessWidget {
   const MilestonePage({super.key});

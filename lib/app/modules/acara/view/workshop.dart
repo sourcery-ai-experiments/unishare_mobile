@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/widgets/post.dart';
+import 'package:unishare/app/widgets/post.dart';
 
-class KompetisiPage extends StatelessWidget {
-  const KompetisiPage({super.key});
+class WorkshopPage extends StatelessWidget {
+  const WorkshopPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class KompetisiPage extends StatelessWidget {
       body: ListView(
         children: const [
           PostCard(
-            type: 'INI KOMPETISI',
+            type: 'INI WORKSHOP',
             title: 'Virtual Talent Inc.',
             period: 'Registrasi: 12 Agust - 28 Sept 2023',
             location: 'Lokasi: Remote from Home',

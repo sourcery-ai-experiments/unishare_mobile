@@ -1,4 +1,4 @@
-import 'package:unishare/app/modules/admin/acara/views/makeacarapost.dart';
+import 'package:unishare/app/modules/admin/acara/views/make_acara_post_screen.dart';
 import 'package:flutter/material.dart';
 
 class DaDrawer extends StatelessWidget {

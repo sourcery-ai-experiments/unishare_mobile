@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:unishare/app/modules/auth/controller/auth_controller.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
-import 'package:unishare/widgets/primary_button.dart';
+import 'package:unishare/app/widgets/primary_button.dart';
 import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
-import 'package:unishare/app/modules/auth/register/controller/register_controller.dart';
-import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
+import 'package:unishare/app/widgets/google_button.dart';
 import 'package:logger/logger.dart';
 
 
 class RegisterPage extends StatefulWidget {
-  final RegisterService? registerService;
+  final AuthService? registerService;
 
   const RegisterPage({super.key, this.registerService});
 
@@ -22,12 +22,12 @@ class _RegisterPageState extends State<RegisterPage> {
   final _nameController = TextEditingController();
 
   final Logger _logger = Logger();
-  late final RegisterService _registerService;
+  late final AuthService _registerService;
 
   @override
   void initState() {
     super.initState();
-    _registerService = widget.registerService ?? RegisterService(); // Or provide your default RegisterService constructor
+    _registerService = widget.registerService ?? AuthService(); // Or provide your default RegisterService constructor
 
   }
 
@@ -140,19 +140,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 20.0),
+             const SizedBox(height: 20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black,
-                      backgroundColor: Colors.white,
-                      minimumSize: const Size(150.0, 50.0),
-                    ),
-                    icon: const Icon(Icons.g_mobiledata, color: Colors.blue),
-                    label: const Text('Google'),
-                  ),
+                  const GoogleButton(),
                   ElevatedButton.icon(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(

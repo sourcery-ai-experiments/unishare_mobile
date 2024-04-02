@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:unishare/app/modules/acara/acara_page.dart';
+import 'package:unishare/app/modules/acara/view/acara_page.dart';
 import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
 import 'package:unishare/app/modules/jadwal/jadwal_page.dart';
 import 'package:unishare/app/modules/karir/karir_page.dart';
 import 'package:unishare/app/modules/notification/views/notification_screen.dart';
-import 'package:unishare/widgets/homepage_card.dart';
+import 'package:unishare/app/widgets/homepage_card.dart';
 import 'mock.dart';
 
 import 'test_helper.dart';
