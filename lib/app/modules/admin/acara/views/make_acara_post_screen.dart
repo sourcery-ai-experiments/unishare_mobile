@@ -2,6 +2,7 @@ import 'package:unishare/app/modules/admin/acara/controller/acara_controller.dar
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:unishare/app/models/acara_kemahasiswaan.dart';
+import 'package:unishare/app/widgets/file_picker.dart';
 
 class MakeAcaraPost extends StatefulWidget {
   const MakeAcaraPost({super.key});
@@ -147,26 +148,16 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
             const SizedBox(height: 20),
 
             //guidebook
-            const Text(
-              'Guidebook',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            //file input
-            const SizedBox(height: 20),
+            FileInputWidget(
+              fileType: 'Guidebook',),
+
+            const SizedBox(height: 10),
 
             //banner acara
-            const Text(
-              'Banner Acara',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            //file input
-            const SizedBox(height: 20),
+            FileInputWidget(
+              fileType: 'Banner Acara',),
+
+            const SizedBox(height: 10),
 
             //deskripsi acara
             const Text(
@@ -176,7 +167,7 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            TextFormField(
+            TextFormField( 
               controller: _deskripsiController,
               maxLines: null, // Allow for multi-line input
             ),
@@ -191,7 +182,7 @@ class _MakeAcaraPostState extends State<MakeAcaraPost> {
                     penyelenggara: _penyelenggaraController.text,
                     urlAcara: _selectedTema,
                     img: "/img/Wzrd.jpg",
-                    guidebook: "/img/guidebook.pdf",
+                    guidebook: "FileInputWidgetState()._filePath",
                     deskripsi: _deskripsiController.text,
                     startDate: Timestamp.now(),
                     endDate: Timestamp.now(),
