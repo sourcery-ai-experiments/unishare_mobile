@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
-import 'package:unishare/app/widgets/primary_button.dart';
-import 'package:unishare/app/widgets/secondary_button.dart';
+import 'package:unishare/app/widgets/button/primary_button.dart';
+import 'package:unishare/app/widgets/button/secondary_button.dart';
 
 
 class OnboardingScreen extends StatelessWidget {

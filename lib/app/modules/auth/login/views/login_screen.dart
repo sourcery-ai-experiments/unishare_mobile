@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:unishare/app/modules/auth/controller/auth_controller.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
-import 'package:unishare/app/widgets/google_button.dart';
-import 'package:unishare/app/widgets/primary_button.dart';
+import 'package:unishare/app/widgets/button/google_button.dart';
+import 'package:unishare/app/widgets/button/primary_button.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 import 'package:unishare/app/modules/admin/dashboard_admin.dart';
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/datextfield.dart';
+import '../../widgets/date/datextfield.dart';
+
 
 class MakeBeasiswaPost extends StatelessWidget {
   const MakeBeasiswaPost({Key? key});

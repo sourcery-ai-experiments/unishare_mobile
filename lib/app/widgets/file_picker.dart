@@ -7,8 +7,9 @@ import 'package:path/path.dart' as path;
 
 class FileInputWidget extends StatefulWidget {
   final String fileType;
+  final void Function(String? firebaseUrl)? onSaveToDatabase;
 
-  FileInputWidget({required this.fileType});
+  FileInputWidget({required this.fileType, this.onSaveToDatabase});
 
   @override
   _FileInputWidgetState createState() => _FileInputWidgetState();
@@ -31,12 +32,21 @@ class _FileInputWidgetState extends State<FileInputWidget> {
       String directory = widget.fileType == 'Image' ? 'img/' : 'file/';
 
       // Upload file ke Firebase Storage
-      Reference ref = FirebaseStorage.instance.ref().child(directory).child(path.basename(_filePath));
+      Reference ref = FirebaseStorage.instance
+          .ref()
+          .child(directory)
+          .child(path.basename(_filePath));
       UploadTask uploadTask = ref.putFile(File(_filePath));
       TaskSnapshot snapshot = await uploadTask.whenComplete(() {});
 
       // Dapatkan URL file yang diupload
       String downloadUrl = await snapshot.ref.getDownloadURL();
+
+      // Panggil callback untuk menyimpan URL ke database jika tersedia
+      if (widget.onSaveToDatabase != null) {
+        widget.onSaveToDatabase!(downloadUrl);
+      }
+
       return downloadUrl;
     }
     return null;
@@ -59,7 +69,7 @@ class _FileInputWidgetState extends State<FileInputWidget> {
             String? firebaseUrl = await _pickPdfFile();
             if (firebaseUrl != null) {
               // Do something with firebaseUrl, such as save it to database
-              print('Firebase Storage URL: $firebaseUrl');
+              // Tidak perlu melakukan apa pun di sini karena sudah ditangani di _pickPdfFile
             }
           },
           child: Row(
