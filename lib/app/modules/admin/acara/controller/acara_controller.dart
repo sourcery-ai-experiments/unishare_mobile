@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:unishare/models/acara_kemahasiswaan.dart';
+import 'package:unishare/app/models/acara_kemahasiswaan.dart';
 import 'package:flutter/material.dart';
 
 class AcaraService{

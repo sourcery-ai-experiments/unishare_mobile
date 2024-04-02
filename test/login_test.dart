@@ -9,8 +9,8 @@ import 'package:unishare/app/modules/auth/login/views/login_screen.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
 import 'package:unishare/app/modules/onboarding/views/onboarding_screen.dart';
-import 'package:unishare/widgets/google_button.dart';
-import 'package:unishare/widgets/primary_button.dart';
+import 'package:unishare/app/widgets/google_button.dart';
+import 'package:unishare/app/widgets/primary_button.dart';
 
 import 'mock.dart';
 import 'test_helper.dart';
