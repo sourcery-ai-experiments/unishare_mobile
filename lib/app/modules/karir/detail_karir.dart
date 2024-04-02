@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/app/widgets/description_card.dart';
-import 'package:unishare/app/widgets/detail_top_card.dart';
-import 'package:unishare/app/widgets/regulation_card.dart';
+import 'package:unishare/app/widgets/card/description_card.dart';
+import 'package:unishare/app/widgets/card/detail_top_card.dart';
+import 'package:unishare/app/widgets/card/regulation_card.dart';
 
 class DetailKarir extends StatefulWidget {
   const DetailKarir({Key? key}) : super(key: key);

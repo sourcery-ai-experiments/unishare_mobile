@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/app/widgets/chart.dart';
-import 'package:unishare/app/widgets/chart_explanation.dart';
-import 'package:unishare/app/widgets/secondary_button.dart';
-import 'package:unishare/app/widgets/ternary_button.dart';
-import 'package:unishare/app/widgets/to_do_list_card.dart';
+import 'package:unishare/app/widgets/chart/chart.dart';
+import 'package:unishare/app/widgets/chart/chart_explanation.dart';
+import 'package:unishare/app/widgets/button/ternary_button.dart';
+import 'package:unishare/app/widgets/card/to_do_list_card.dart';
 
 class ToDoList extends StatelessWidget {
   const ToDoList({Key? key});
