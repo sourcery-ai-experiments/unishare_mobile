@@ -1,5 +1,6 @@
-import 'package:unishare/widgets/datextfield.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/datextfield.dart';
 
 class MakeBeasiswaPost extends StatelessWidget {
   const MakeBeasiswaPost({Key? key});

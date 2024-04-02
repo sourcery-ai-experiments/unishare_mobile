@@ -5,6 +5,7 @@ import 'package:unishare/app/modules/homescreen/home_screen.dart';
 import 'package:unishare/app/widgets/google_button.dart';
 import 'package:unishare/app/widgets/primary_button.dart';
 import 'package:unishare/app/modules/auth/register/views/register_screen.dart';
+import 'package:unishare/app/modules/admin/dashboard_admin.dart';
 
 class LoginPage extends StatefulWidget {
   final AuthService? loginService;
@@ -17,15 +18,15 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  
+
   late final AuthService _loginService;
   final Logger _logger = Logger();
 
   @override
   void initState() {
     super.initState();
-    _loginService = widget.loginService ?? AuthService(); // Or provide your default RegisterService constructor
-
+    _loginService = widget.loginService ??
+        AuthService(); // Or provide your default RegisterService constructor
   }
 
   Future<void> _login() async {
@@ -36,14 +37,22 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    final user = await _loginService.signInWithEmailAndPassword(email, password);
+    final user =
+        await _loginService.signInWithEmailAndPassword(email, password);
     if (user != null) {
-      _logger.i("Login successful");
-       Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
-    );
-
+      if (user.email != "admin@unishare.com") {
+        _logger.i("Login successful");
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+        );
+      }else {
+        _logger.i("Login successful");
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const AdminHomePage()),
+        );
+      }
     } else {
       _logger.w("Login failed");
     }
