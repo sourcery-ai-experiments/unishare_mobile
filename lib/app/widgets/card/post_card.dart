@@ -1,14 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' show AssetImage, BorderRadius, BoxDecoration, BoxFit, BoxShadow, BuildContext, Card, Color, Colors, Column, Container, CrossAxisAlignment, DecorationImage, EdgeInsets, Expanded, FontWeight, GestureDetector, MaterialPageRoute, Navigator, Offset, Padding, Row, SizedBox, StatelessWidget, Text, TextStyle, Widget;
 import 'package:unishare/app/modules/karir/detail_karir.dart';
 
 class PostCard extends StatelessWidget {
-  final String type;
-  final String title;
-  final String period;
+  final String? type;
+  final String? title;
+  final String? period;
   final String thumbnailAsset;
-  final String location;
+  final String? location;
   const PostCard({super.key, required this.type, required this.title, required this.period, required this.location, required this.thumbnailAsset});
 
   @override
@@ -60,7 +58,7 @@ class PostCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        type,
+                        type!,
                         style: const TextStyle(
                           fontFamily: 'Rubik',
                           fontWeight: FontWeight.normal,
@@ -69,7 +67,7 @@ class PostCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        title,
+                        title!,
                         style: const TextStyle(
                           fontFamily: 'Rubik',
                           fontWeight: FontWeight.bold,
@@ -78,7 +76,7 @@ class PostCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        period,
+                        period!,
                         style: const TextStyle(
                           fontFamily: 'Rubik',
                           fontWeight: FontWeight.normal,
@@ -87,7 +85,7 @@ class PostCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        location,
+                        location!,
                         style: const TextStyle(
                           fontFamily: 'Rubik',
                           fontWeight: FontWeight.w200,

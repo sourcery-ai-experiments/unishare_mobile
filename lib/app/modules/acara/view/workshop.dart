@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/app/widgets/post.dart';
+import 'package:unishare/app/widgets/card/post_card.dart';
 
 class WorkshopPage extends StatelessWidget {
   const WorkshopPage({super.key});
