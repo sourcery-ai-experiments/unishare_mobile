@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:unishare/app/modules/acara/view/acara_page.dart';
+import 'package:unishare/app/modules/beasiswa/views/beasiswa_screen.dart';
 import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
 import 'package:unishare/app/modules/jadwal/jadwal_page.dart';
 import 'package:unishare/app/modules/karir/karir_page.dart';
+import 'package:unishare/app/modules/leaderboard/leaderboard_page.dart';
 import 'package:unishare/app/modules/notification/views/notification_screen.dart';
 import 'package:unishare/app/widgets/card/homepage_card.dart';
 import 'mock.dart';
@@ -78,41 +80,51 @@ void main() {
     });
 
     testWidgets(
-        'Navigate to Jadwal page by tapping Jadwal button on the home screen',
-            (WidgetTester tester) async {
-          FlutterError.onError = ignoreOverflowErrors;
+      'Navigation from home screen to specific pages and back',
+      (WidgetTester tester) async {
+        FlutterError.onError = ignoreOverflowErrors;
+
+        // Define a list of maps containing key and dynamic value pairs
+        final List<Map<String, dynamic>> navigationTests = [
+          {
+            'buttonKey': const Key("leaderboard-icon-button"),
+            'pageType': LeaderboardPage,
+            'pageTitle': "Leaderboard",
+          },
+          {
+            'buttonKey': const Key("jadwal-icon-button"),
+            'pageType': JadwalMain,
+            'pageTitle': "To-do List",
+          },
+          {
+            'buttonKey': const Key("notifikasi-icon-button"),
+            'pageType': NotificationPage,
+            'pageTitle': "Notifikasi",
+          },
+          {
+            'buttonKey': const Key("beasiswa-icon-button"),
+            'pageType': BeasiswaScreen,
+            'pageTitle': "Beasiswa",
+          }
+        ];
+
+        for (final navigationTest in navigationTests) {
           await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
 
-          // Verify homepage can navigate to jadwal page
-          await tester.tap(find.byKey(const Key("jadwal-icon-button")));
+          // Tap the button corresponding to the current test case
+          await tester.tap(find.byKey(navigationTest['buttonKey']));
           await tester.pumpAndSettle();
-          expect(find.byType(JadwalMain), findsOneWidget);
-          expect(find.text("To-do List"), findsOneWidget);
+          expect(find.byType(navigationTest['pageType']), findsOneWidget);
+          expect(find.text(navigationTest['pageTitle']), findsAny);
 
-          // Verify jadwal page can navigate back to the home page using back button
+          // Navigate back to the home page using the back button
           await tester.tap(find.byType(IconButton).first);
           await tester.pumpAndSettle();
+
+          // Verify that we're back on the home screen
           expect(find.byType(HomeScreen), findsOneWidget);
-        });
-
-    testWidgets(
-        'Navigate to Notification page by tapping Notifikasi button on the home screen',
-            (WidgetTester tester) async {
-          FlutterError.onError = ignoreOverflowErrors;
-          await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-
-          // Verify homepage can navigate to jadwal page
-          await tester.tap(find.byKey(const Key("notifikasi-icon-button")));
-          await tester.pumpAndSettle();
-          expect(find.byType(NotificationPage), findsOneWidget);
-
-          // Verify Notification page can navigate back to the home page using back button
-          await tester.tap(find.byType(IconButton).first);
-          await tester.pumpAndSettle();
-          expect(find.byType(HomeScreen), findsOneWidget);
-
-        });
-
-
+        }
+      },
+    );
   });
 }

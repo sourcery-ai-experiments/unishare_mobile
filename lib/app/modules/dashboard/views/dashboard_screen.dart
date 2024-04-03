@@ -126,6 +126,7 @@ class Dashboard extends StatelessWidget {
                             children: [
                               // 1. milestone
                               Padding(
+                                key: const Key("milestone-icon-button"),
                                 padding: const EdgeInsets.only(right: 28),
                                 child: Column(
                                   children: [
@@ -157,6 +158,7 @@ class Dashboard extends StatelessWidget {
                               ),
                               // 2. leaderboard
                               Padding(
+                                key: const Key("leaderboard-icon-button"),
                                 padding: const EdgeInsets.only(right: 28),
                                 child: Column(
                                   children: [
@@ -272,6 +274,7 @@ class Dashboard extends StatelessWidget {
                               ),
                               // 6. beasiswa
                               Padding(
+                                key: const Key("beasiswa-icon-button"),
                                 padding: const EdgeInsets.only(top: 12),
                                 child: Column(
                                   children: [
