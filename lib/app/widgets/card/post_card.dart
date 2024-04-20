@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' show AssetImage, BorderRadius, BoxDecoration, BoxFit, BoxShadow, BuildContext, Card, Color, Colors, Column, Container, CrossAxisAlignment, DecorationImage, EdgeInsets, Expanded, FontWeight, GestureDetector, MaterialPageRoute, Navigator, Offset, Padding, Row, SizedBox, StatelessWidget, Text, TextStyle, Widget;
-import 'package:unishare/app/modules/karir/detail_karir.dart';
+import 'package:unishare/app/modules/karir/views/detail_karir.dart';
 
 class PostCard extends StatelessWidget {
   final String? type;
