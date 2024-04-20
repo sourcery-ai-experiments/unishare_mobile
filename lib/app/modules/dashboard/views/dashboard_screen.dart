@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/app/modules/beasiswa/views/beasiswa_screen.dart';
 import 'package:unishare/app/modules/jadwal/jadwal_page.dart';
-import 'package:unishare/app/modules/leaderboard/leaderboard_page.dart';
-import 'package:unishare/app/modules/milestone/milestone_page.dart';
+import 'package:unishare/app/modules/leaderboard/views/leaderboard_page.dart';
+import 'package:unishare/app/modules/milestone/views/milestone_page.dart';
 import 'package:unishare/app/modules/notification/views/notification_screen.dart';
 import 'package:unishare/app/widgets/card/homepage_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
