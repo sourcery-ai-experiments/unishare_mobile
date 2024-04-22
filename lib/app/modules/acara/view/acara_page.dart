@@ -15,10 +15,10 @@ class AcaraPage extends StatefulWidget {
 
 class _AcaraPageState extends State<AcaraPage> {
   final List<Map<String, dynamic>> buttons = [
-    {'text': 'All', 'icon': Icons.interests_sharp},
-    {'text': 'Kompetisi', 'icon': Icons.computer_sharp},
-    {'text': 'Workshop', 'icon': Icons.settings_outlined},
-    {'text': 'Seminar', 'icon': Icons.people_alt_sharp},
+    {'key': 'all-category', 'text': 'All', 'icon': Icons.interests_sharp},
+    {'key': 'kompetisi-category', 'text': 'Kompetisi', 'icon': Icons.computer_sharp},
+    {'key': 'workshop-category', 'text': 'Workshop', 'icon': Icons.settings_outlined},
+    {'key': 'seminar-category', 'text': 'Seminar', 'icon': Icons.people_alt_sharp},
   ];
   int _selectedIndex = 0;
   late PageController _pageController;
@@ -70,6 +70,7 @@ class _AcaraPageState extends State<AcaraPage> {
                     (entry) => Padding(
                       padding: const EdgeInsets.only(left: 5, right: 5, bottom: 8),
                       child: ElevatedButton(
+                        key: Key(entry.value['key']),
                         onPressed: () {
                           setState(() {
                             _selectedIndex = entry.key;

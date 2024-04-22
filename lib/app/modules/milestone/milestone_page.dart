@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/milestone_card.dart';
 import '../../widgets/pencapaian_card.dart';
+import '../homescreen/home_screen.dart';
 
 class MilestonePage extends StatelessWidget {
   const MilestonePage({super.key});
@@ -10,6 +11,15 @@ class MilestonePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+        ),
         title: const Text(
           'Milestone',
           style: TextStyle(

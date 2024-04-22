@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/achievement_card.dart';
 import '../../widgets/achievement_logo.dart';
+import '../homescreen/home_screen.dart';
 
 class LeaderboardPage extends StatelessWidget {
   const LeaderboardPage({super.key});
@@ -10,6 +11,15 @@ class LeaderboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+        ),
         title: const Text(
           'Leaderboard',
           style: TextStyle(
