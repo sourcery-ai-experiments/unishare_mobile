@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/app/modules/beasiswa/views/beasiswa_screen.dart';
+import 'package:unishare/app/modules/chat/chatroom.dart';
+import 'package:unishare/app/modules/chat/messages.dart';
 import 'package:unishare/app/modules/jadwal/jadwal_page.dart';
 import 'package:unishare/app/modules/leaderboard/views/leaderboard_page.dart';
 import 'package:unishare/app/modules/milestone/views/milestone_page.dart';
@@ -222,7 +224,14 @@ class Dashboard extends StatelessWidget {
                               Column(
                                 children: [
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Messages(),
+                                        ),
+                                      );
+                                    },
                                     icon: Image.asset(
                                       'assets/icons/chat.png',
                                     ),

@@ -1,5 +1,6 @@
 import 'package:unishare/app/modules/admin/acara/views/make_acara_post_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:unishare/app/modules/admin/karir/karirpostadmin.dart';
 
 class DaDrawer extends StatelessWidget {
   const DaDrawer({super.key});
@@ -40,7 +41,15 @@ class DaDrawer extends StatelessWidget {
                   title:
                       Text('Buat Karir', style: TextStyle(color: Colors.white)),
                   leading: Icon(Icons.settings),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => KarirAdmin(),
+                        ));
+                  },
                 ),
               ),
               //settings list tile
@@ -82,7 +91,10 @@ class DaDrawer extends StatelessWidget {
                 'L O G O U T',
                 style: TextStyle(color: Colors.red),
               ),
-              leading: const Icon(Icons.logout, color: Colors.red,),
+              leading: const Icon(
+                Icons.logout,
+                color: Colors.red,
+              ),
               onTap: () {},
             ),
           ),
