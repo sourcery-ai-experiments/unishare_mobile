@@ -5,6 +5,8 @@ class KarirPost {
   final String lokasi;
   final String urlKarir;
   final String img;
+  final String tema;
+  final String kategori;
   final String deskripsi;
   final String penyelenggara;
   final Timestamp startDate;
@@ -16,6 +18,8 @@ class KarirPost {
     required this.lokasi,
     required this.urlKarir,
     required this.img,
+    required this.tema,
+    required this.kategori,
     required this.deskripsi,
     required this.startDate,
     required this.endDate,
@@ -26,6 +30,8 @@ class KarirPost {
         'lokasi': lokasi,
         'urlKarir': urlKarir,
         'img': img,
+        'tema': tema,
+        'kategori': kategori,
         'deskripsi': deskripsi,
         'startDate': startDate,
         'endDate': endDate,

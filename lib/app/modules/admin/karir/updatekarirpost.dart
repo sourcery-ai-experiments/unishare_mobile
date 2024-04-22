@@ -4,14 +4,15 @@ import 'package:unishare/app/modules/admin/karir/karirmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
-class MakeKarirPost extends StatefulWidget {
-  MakeKarirPost({Key? key}) : super(key: key);
+class UpdateKarirPost extends StatefulWidget {
+  final DocumentSnapshot karirPost;
+  UpdateKarirPost({Key? key, required this.karirPost}) : super(key: key);
 
   @override
-  _MakeKarirPostState createState() => _MakeKarirPostState();
+  _UpdateKarirPostState createState() => _UpdateKarirPostState();
 }
 
-class _MakeKarirPostState extends State<MakeKarirPost> {
+class _UpdateKarirPostState extends State<UpdateKarirPost> {
   TextEditingController _posisiController = TextEditingController();
   TextEditingController _lokasiController = TextEditingController();
   TextEditingController _urlController = TextEditingController();
@@ -20,6 +21,19 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
 
   String temaValue = 'Teknologi';
   String kategoriValue = 'Lowongan Kerja';
+
+  @override
+  void initState() {
+    super.initState();
+    // Set initial values for text fields
+    _posisiController.text = widget.karirPost['posisi'];
+    _penyelenggaraController.text = widget.karirPost['penyelenggara'];
+    _lokasiController.text = widget.karirPost['lokasi'];
+    _urlController.text = widget.karirPost['urlKarir'];
+    _deskripsiController.text = widget.karirPost['deskripsi'];
+    temaValue = widget.karirPost['tema'];
+    kategoriValue = widget.karirPost['kategori'];
+  }
 
   Future<void> _openFilePicker(BuildContext context) async {
     try {
@@ -37,7 +51,7 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Buat Karir',
+          'Update Karir',
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -53,7 +67,6 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
             const SizedBox(
               height: 15,
             ),
-            // judul
             const Text(
               'Posisi Karir',
               style: TextStyle(
@@ -71,8 +84,6 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
               },
             ),
             const SizedBox(height: 20),
-
-            //penyelenggara
             const Text(
               'Penyelenggara',
               style: TextStyle(
@@ -90,7 +101,6 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
               },
             ),
             const SizedBox(height: 20),
-
             const Text(
               'Lokasi',
               style: TextStyle(
@@ -102,14 +112,12 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
               controller: _lokasiController,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Penyelenggara tidak boleh kosong';
+                  return 'Lokasi tidak boleh kosong';
                 }
                 return null;
               },
             ),
             const SizedBox(height: 20),
-
-            //link Karir
             const Text(
               'Link Karir',
               style: TextStyle(
@@ -127,8 +135,6 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
               },
             ),
             const SizedBox(height: 20),
-
-            //tema
             const Text(
               'Tema',
               style: TextStyle(
@@ -153,8 +159,6 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
               },
             ),
             const SizedBox(height: 20),
-
-            //kategori
             const Text(
               'Kategori',
               style: TextStyle(
@@ -172,49 +176,6 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
               },
             ),
             const SizedBox(height: 20),
-
-            //guidebook
-            const Text(
-              'Guidebook',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            //file input
-            ElevatedButton(
-              onPressed: () {
-                _openFilePicker(context);
-              },
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        8), // Adjust border radius as needed
-                    side: const BorderSide(
-                      color: Colors.black, // Adjust color of the dashed border
-                      width: 2, // Adjust width of the dashed border
-                      //style: BorderStyle., // Set border style to dashed
-                    ),
-                  ),
-                ),
-              ),
-              child: const Text('Open File Picker'),
-            ),
-            const SizedBox(height: 20),
-
-            //banner Karir
-            const Text(
-              'Banner Karir',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            //file input
-            const SizedBox(height: 20),
-
-            //deskripsi Karir
             const Text(
               'Deskripsi Karir',
               style: TextStyle(
@@ -227,7 +188,6 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
               maxLines: null, // Allow for multi-line input
             ),
             const SizedBox(height: 20),
-
             Center(
               child: ElevatedButton(
                 style: const ButtonStyle(
@@ -236,9 +196,8 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
                     padding: MaterialStatePropertyAll(EdgeInsets.only(
                         left: 150, top: 20, right: 150, bottom: 20))),
                 onPressed: () {
-                  // Defer the validation until after the build method
                   Future.delayed(Duration.zero, () {
-                    KarirPost karirPost = KarirPost(
+                    KarirPost updatedKarirPost = KarirPost(
                       tema: temaValue,
                       kategori: kategoriValue,
                       posisi: _posisiController.text,
@@ -247,13 +206,14 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
                       lokasi: _lokasiController.text,
                       img: "/img/Wzrd.jpg",
                       deskripsi: _deskripsiController.text,
-                      startDate: Timestamp.now(),
-                      endDate: Timestamp.now(),
+                      startDate: widget.karirPost['startDate'],
+                      endDate: widget.karirPost['endDate'],
                     );
-                    KarirService.addToFirestore(context, karirPost);
+                    KarirService.updateKarir(
+                        context, updatedKarirPost, widget.karirPost.id);
                   });
                 },
-                child: const Text('Unggah',
+                child: const Text('Update',
                     style: TextStyle(color: Colors.black87)),
               ),
             ),

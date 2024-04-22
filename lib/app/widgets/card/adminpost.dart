@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unishare/app/modules/admin/karir/updatekarirpost.dart';
 
 class AdminPostCard extends StatelessWidget {
   final String type;
@@ -100,10 +101,7 @@ class AdminPostCard extends StatelessWidget {
                 ),
                 IconButton(
                   icon: Icon(Icons.edit),
-                  onPressed: () {
-                    // Tambahkan logika untuk edit
-                    update!();
-                  },
+                  onPressed: update,
                 ),
                 IconButton(
                   icon: Icon(Icons.delete),

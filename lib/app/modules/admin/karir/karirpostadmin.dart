@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:unishare/app/modules/admin/karir/karircontroller.dart';
 import 'package:unishare/app/modules/admin/karir/makekarirpost.dart';
+import 'package:unishare/app/modules/admin/karir/updatekarirpost.dart';
 import 'package:unishare/app/widgets/card/adminpost.dart';
 
 class KarirAdmin extends StatelessWidget {
@@ -27,7 +28,7 @@ class KarirAdmin extends StatelessWidget {
           SizedBox(
             height: 25,
           ),
-          Expanded(child: _buildKarirList()),
+          Expanded(child: _buildKarirList(context)),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -46,7 +47,7 @@ class KarirAdmin extends StatelessWidget {
     );
   }
 
-  Widget _buildKarirList() {
+  Widget _buildKarirList(BuildContext context) {
     return StreamBuilder(
         stream: _karirService.getKarirs(),
         builder: (context, snapshot) {
@@ -57,13 +58,14 @@ class KarirAdmin extends StatelessWidget {
             return Text('Loading...');
           }
           return ListView(
-            children:
-                snapshot.data!.docs.map((doc) => _buildKarirItem(doc)).toList(),
+            children: snapshot.data!.docs
+                .map((doc) => _buildKarirItem(doc, context))
+                .toList(),
           );
         });
   }
 
-  Widget _buildKarirItem(DocumentSnapshot doc) {
+  Widget _buildKarirItem(DocumentSnapshot doc, BuildContext context) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
     return AdminPostCard(
@@ -76,7 +78,14 @@ class KarirAdmin extends StatelessWidget {
         KarirService.deleteKompetisi(doc.id);
       },
       update: () {
-        //disini
+        Navigator.of(context).pop(); // Tutup dialog
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => UpdateKarirPost(
+                karirPost: doc,
+              ),
+            ));
       },
     );
   }
