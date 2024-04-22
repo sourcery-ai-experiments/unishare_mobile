@@ -28,12 +28,15 @@ class KarirService {
   }
 
   //update
-  static Future<KarirPost> updateKompetisi(
-      KarirPost karirPost, String id) async {
+  static Future<KarirPost> updateKarir(
+      BuildContext context, karirPost, String id) async {
     await FirebaseFirestore.instance
         .collection('karir')
         .doc(id)
         .update(karirPost.toMap());
+    ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Career post updated successfully!')));
+    Navigator.pop(context); // Assuming this is in a new screen
     return karirPost;
   }
 
