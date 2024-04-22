@@ -6,7 +6,7 @@ class AdminPostCard extends StatelessWidget {
   final String title;
   final String period;
   final String thumbnailAsset;
-  final String location;
+  final String deskripsi;
   final void Function()? delete;
   final void Function()? update;
 
@@ -15,7 +15,7 @@ class AdminPostCard extends StatelessWidget {
     required this.type,
     required this.title,
     required this.period,
-    required this.location,
+    required this.deskripsi,
     required this.thumbnailAsset,
     this.delete,
     this.update,
@@ -89,7 +89,7 @@ class AdminPostCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        location,
+                        deskripsi,
                         style: const TextStyle(
                           fontFamily: 'Rubik',
                           fontWeight: FontWeight.w200,
