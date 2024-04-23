@@ -1,21 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:unishare/app/modules/admin/karir/karircontroller.dart';
-import 'package:unishare/app/modules/admin/karir/makekarirpost.dart';
-import 'package:unishare/app/modules/admin/karir/updatekarirpost.dart';
+import 'package:unishare/app/modules/admin/beasiswa/beasiswa_controller.dart';
+import 'package:unishare/app/modules/admin/beasiswa/make_beasiswa_post.dart';
+import 'package:unishare/app/modules/admin/beasiswa/update_beasiswa_post.dart';
 import 'package:unishare/app/widgets/card/adminpost.dart';
 
-class KarirAdmin extends StatelessWidget {
-  final KarirService _karirService = KarirService();
+class BeasiswaAdmin extends StatelessWidget {
+  final BeasiswaService _karirService = BeasiswaService();
 
-  KarirAdmin({super.key});
+  BeasiswaAdmin({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Karir',
+          'Beasiswa',
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.white),
         ),
@@ -38,7 +38,7 @@ class KarirAdmin extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MakeKarirPost(),
+                builder: (context) => MakeBeasiswaPost(),
               ));
         },
         backgroundColor: const Color(0xFFF75600),
@@ -49,7 +49,7 @@ class KarirAdmin extends StatelessWidget {
 
   Widget _buildKarirList(BuildContext context) {
     return StreamBuilder(
-        stream: _karirService.getKarirs(),
+        stream: _karirService.getBeasiswas(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Text('Error');
@@ -69,21 +69,21 @@ class KarirAdmin extends StatelessWidget {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
     return AdminPostCard(
-      type: data['posisi'],
+      type: data['judul'],
       title: data['penyelenggara'],
       period: 'Open',
       deskripsi: data['deskripsi'],
       thumbnailAsset: data['img'],
       delete: () {
-        KarirService.deleteKompetisi(doc.id);
+        BeasiswaService.deleteBeasiswa(doc.id);
       },
       update: () {
         Navigator.of(context).pop(); // Tutup dialog
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => UpdateKarirPost(
-                karirPost: doc,
+              builder: (context) => EditBeasiswaPost(
+                beasiswaPost: doc,
               ),
             ));
       },
