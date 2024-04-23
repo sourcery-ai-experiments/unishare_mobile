@@ -1,6 +1,8 @@
 import 'package:unishare/app/modules/admin/acara/views/make_acara_post_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:unishare/app/modules/admin/beasiswa/beasiswa_post_admin.dart';
 import 'package:unishare/app/modules/admin/karir/karirpostadmin.dart';
+import 'package:unishare/app/modules/admin/beasiswa/make_beasiswa_post.dart';
 
 class DaDrawer extends StatelessWidget {
   const DaDrawer({super.key});
@@ -77,7 +79,15 @@ class DaDrawer extends StatelessWidget {
                   title: const Text('Beasiswa',
                       style: TextStyle(color: Colors.white)),
                   leading: const Icon(Icons.settings),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BeasiswaAdmin(),
+                        ));
+                  },
                 ),
               ),
             ],
