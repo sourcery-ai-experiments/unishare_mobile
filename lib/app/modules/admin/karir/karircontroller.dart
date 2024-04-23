@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:unishare/app/modules/admin/karir/karirmodel.dart';
-import 'package:unishare/app/modules/karir/karir_page.dart';
 
 class KarirService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
