@@ -29,11 +29,17 @@ class AuthService {
         password: password,
       );
 
-      _firestore.collection('users').doc(userCredential.user!.uid).set({
-        'uid': userCredential.user!.uid,
-        'displayName': displayName,
-        'email': email,
-      });
+      try {
+        await _firestore.collection('users').doc(userCredential.user!.uid).set({
+          'uid': userCredential.user!.uid,
+          'displayName': displayName,
+          'email': email,
+        });
+      } catch (e) {
+        logger.e("Error registering user: $e");
+        return null;
+      }
+
       await userCredential.user!.updateDisplayName(displayName);
       return userCredential.user;
     } catch (e) {

@@ -8,32 +8,35 @@ class ChatService extends ChangeNotifier {
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
 
   Future<void> sendMessage(String receiverId, String message) async {
-    final String currentUserInfo = firebaseAuth.currentUser!.uid;
-    final String currentUserDisplayName =
-        firebaseAuth.currentUser!.displayName!;
-    final Timestamp timestamp = Timestamp.now();
+    try {
+      final String currentUserInfo = firebaseAuth.currentUser!.uid;
+      final String currentUserDisplayName =
+          firebaseAuth.currentUser!.displayName!;
+      final Timestamp timestamp = Timestamp.now();
 
-    //Create new message
-    Message newMessage = Message(
-      senderId: currentUserInfo,
-      senderName: currentUserDisplayName,
-      message: message,
-      receiverId: receiverId,
-      timestamp: timestamp,
-    );
+      //Create new message
+      Message newMessage = Message(
+        senderId: currentUserInfo,
+        senderName: currentUserDisplayName,
+        message: message,
+        receiverId: receiverId,
+        timestamp: timestamp,
+      );
 
-    //construct chat room id from current user id and receiver id (sorted to ensure consistency)
-    List<String> ids = [currentUserInfo, receiverId];
-    ids.sort();
-    String chatRoomId = ids.join('_');
+      //construct chat room id from current user id and receiver id (sorted to ensure consistency)
+      List<String> ids = [currentUserInfo, receiverId];
+      ids.sort();
+      String chatRoomId = ids.join('_');
 
-    await _fireStore
-        .collection('chatrooms')
-        .doc(chatRoomId)
-        .collection('messages')
-        .add(newMessage.toMap());
-
-    //GET MESSAGE
+      await _fireStore
+          .collection('chatrooms')
+          .doc(chatRoomId)
+          .collection('messages')
+          .add(newMessage.toMap());
+    } catch (e) {
+      // Handle the error here
+      print('Error sending message: $e');
+    }
   }
 
   Stream<QuerySnapshot> getMessages(String userId, String otherUserId) {

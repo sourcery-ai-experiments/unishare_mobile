@@ -21,8 +21,12 @@ class _ChatPageState extends State<ChatPage> {
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
-      chatController.sendMessage(widget.receiverId, _messageController.text);
-      _messageController.clear();
+      try {
+        chatController.sendMessage(widget.receiverId, _messageController.text);
+        _messageController.clear();
+      } catch (e) {
+        print('Error sending message: $e');
+      }
     }
   }
 
@@ -71,12 +75,12 @@ class _ChatPageState extends State<ChatPage> {
     Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
     //allign the message to the right if the sender is the current user, otherwise to the left
-    var allignment = (data['senderId'] == _auth.currentUser!.uid)
+    var alignment = (data['senderId'] == _auth.currentUser!.uid)
         ? Alignment.centerRight
         : Alignment.centerLeft;
 
     return Container(
-        alignment: allignment,
+        alignment: alignment,
         child: Column(
           children: [
             Text(data['senderName']),
