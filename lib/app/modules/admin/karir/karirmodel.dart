@@ -4,7 +4,7 @@ class KarirPost {
   final String posisi;
   final String lokasi;
   final String urlKarir;
-  final String img;
+  final String? img;
   final String tema;
   final String kategori;
   final String deskripsi;

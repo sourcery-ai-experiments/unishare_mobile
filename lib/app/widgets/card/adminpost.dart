@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/app/modules/admin/karir/updatekarirpost.dart';
 
 class AdminPostCard extends StatelessWidget {
   final String type;

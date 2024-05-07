@@ -2,7 +2,7 @@ import 'package:unishare/app/modules/admin/acara/views/make_acara_post_screen.da
 import 'package:flutter/material.dart';
 import 'package:unishare/app/modules/admin/beasiswa/beasiswa_post_admin.dart';
 import 'package:unishare/app/modules/admin/karir/karirpostadmin.dart';
-import 'package:unishare/app/modules/admin/beasiswa/make_beasiswa_post.dart';
+import 'package:unishare/app/modules/splashscreen/views/splash_screen.dart';
 
 class DaDrawer extends StatelessWidget {
   const DaDrawer({super.key});
@@ -16,23 +16,30 @@ class DaDrawer extends StatelessWidget {
         children: [
           Column(
             children: [
+              SizedBox(
+                height: 70,
+              ),
               //logo
-              const DrawerHeader(
-                child: Center(
-                    child: Text(
-                  'Unishare',
-                  style: TextStyle(fontSize: 50, color: Colors.white),
-                )),
+              Image.asset(
+                'assets/img/logoHDD.png',
+                scale: 0.8,
+              ),
+              SizedBox(
+                height: 70,
               ),
 
               //home list tile
-              Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: ListTile(
-                  title:
-                      Text('Dashboard', style: TextStyle(color: Colors.white)),
-                  leading: Icon(Icons.home),
-                  onTap: () {},
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(), color: Color.fromRGBO(247, 86, 0, 1)),
+                child: Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: ListTile(
+                    title: Text('Dashboard',
+                        style: TextStyle(color: Colors.white)),
+                    leading: Icon(Icons.home),
+                    onTap: () {},
+                  ),
                 ),
               ),
 
@@ -40,8 +47,7 @@ class DaDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: ListTile(
-                  title:
-                      Text('Karir', style: TextStyle(color: Colors.white)),
+                  title: Text('Karir', style: TextStyle(color: Colors.white)),
                   leading: Icon(Icons.settings),
                   onTap: () {
                     Navigator.pop(context);
@@ -58,8 +64,7 @@ class DaDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: ListTile(
-                  title:
-                      Text('Acara', style: TextStyle(color: Colors.white)),
+                  title: Text('Acara', style: TextStyle(color: Colors.white)),
                   leading: Icon(Icons.settings),
                   onTap: () {
                     Navigator.pop(context);
@@ -105,7 +110,15 @@ class DaDrawer extends StatelessWidget {
                 Icons.logout,
                 color: Colors.red,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SplashScreen(),
+                    ));
+              },
             ),
           ),
         ],

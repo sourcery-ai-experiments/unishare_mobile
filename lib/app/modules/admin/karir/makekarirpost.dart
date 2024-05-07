@@ -3,6 +3,7 @@ import 'package:unishare/app/modules/admin/karir/karircontroller.dart';
 import 'package:unishare/app/modules/admin/karir/karirmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:unishare/app/widgets/file_picker.dart';
 
 class MakeKarirPost extends StatefulWidget {
   MakeKarirPost({Key? key}) : super(key: key);
@@ -17,20 +18,11 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
   TextEditingController _urlController = TextEditingController();
   TextEditingController _deskripsiController = TextEditingController();
   TextEditingController _penyelenggaraController = TextEditingController();
+  DateTime? _endDate;
 
   String temaValue = 'Teknologi';
   String kategoriValue = 'Lowongan Kerja';
-
-  Future<void> _openFilePicker(BuildContext context) async {
-    try {
-      final result = await FilePicker.platform.pickFiles();
-      if (result != null) {
-        final filePath = result.files.single.path;
-      }
-    } catch (e) {
-      print('Error while picking the file: $e');
-    }
-  }
+  String? _img = '';
 
   @override
   Widget build(BuildContext context) {
@@ -183,9 +175,7 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
             ),
             //file input
             ElevatedButton(
-              onPressed: () {
-                _openFilePicker(context);
-              },
+              onPressed: () {},
               style: ButtonStyle(
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
@@ -203,13 +193,49 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
             ),
             const SizedBox(height: 20),
 
-            //banner Karir
+            //time input
             const Text(
-              'Banner Karir',
+              'Tenggat waktu',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: () async {
+                      final DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2000),
+                        lastDate: DateTime(2100),
+                      );
+                      if (pickedDate != null) {
+                        setState(() {
+                          _endDate = pickedDate;
+                        });
+                      }
+                    },
+                    icon: Icon(Icons.calendar_today),
+                    label: Text(
+                      _endDate != null
+                          ? '${_endDate!.day}/${_endDate!.month}/${_endDate!.year}'
+                          : 'Pilih Tanggal',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+
+            //banner Karir
+            FileInputWidget(
+              fileType: 'Banner Karir',
+              onSaveToDatabase: (img) {
+                _img = img;
+              },
             ),
             //file input
             const SizedBox(height: 20),
@@ -234,7 +260,7 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
                     backgroundColor:
                         MaterialStatePropertyAll(Color.fromRGBO(247, 86, 0, 1)),
                     padding: MaterialStatePropertyAll(EdgeInsets.only(
-                        left: 150, top: 20, right: 150, bottom: 20))),
+                        left: 120, top: 20, right: 120, bottom: 20))),
                 onPressed: () {
                   // Defer the validation until after the build method
                   Future.delayed(Duration.zero, () {
@@ -245,10 +271,10 @@ class _MakeKarirPostState extends State<MakeKarirPost> {
                       penyelenggara: _penyelenggaraController.text,
                       urlKarir: _urlController.text,
                       lokasi: _lokasiController.text,
-                      img: "/img/Wzrd.jpg",
+                      img: _img,
                       deskripsi: _deskripsiController.text,
                       startDate: Timestamp.now(),
-                      endDate: Timestamp.now(),
+                      endDate: Timestamp.fromDate(_endDate!),
                     );
                     KarirService.addToFirestore(context, karirPost);
                   });

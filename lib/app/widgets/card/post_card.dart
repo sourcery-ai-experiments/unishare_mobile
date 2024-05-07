@@ -1,4 +1,32 @@
-import 'package:flutter/material.dart' show AssetImage, BorderRadius, BoxDecoration, BoxFit, BoxShadow, BuildContext, Card, Color, Colors, Column, Container, CrossAxisAlignment, DecorationImage, EdgeInsets, Expanded, FontWeight, GestureDetector, MaterialPageRoute, Navigator, NetworkImage, Offset, Padding, Row, SizedBox, StatelessWidget, Text, TextStyle, Widget;
+import 'package:flutter/material.dart'
+    show
+        AssetImage,
+        BorderRadius,
+        BoxDecoration,
+        BoxFit,
+        BoxShadow,
+        BuildContext,
+        Card,
+        Color,
+        Colors,
+        Column,
+        Container,
+        CrossAxisAlignment,
+        DecorationImage,
+        EdgeInsets,
+        Expanded,
+        FontWeight,
+        GestureDetector,
+        MaterialPageRoute,
+        Navigator,
+        Offset,
+        Padding,
+        Row,
+        SizedBox,
+        StatelessWidget,
+        Text,
+        TextStyle,
+        Widget;
 import 'package:unishare/app/modules/karir/views/detail_karir.dart';
 
 class PostCard extends StatelessWidget {
@@ -7,7 +35,13 @@ class PostCard extends StatelessWidget {
   final String? period;
   final String thumbnailAsset;
   final String? location;
-  const PostCard({super.key, required this.type, required this.title, required this.period, required this.location, required this.thumbnailAsset});
+  const PostCard(
+      {super.key,
+      required this.type,
+      required this.title,
+      required this.period,
+      required this.location,
+      required this.thumbnailAsset});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +50,8 @@ class PostCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const DetailKarir(), // Replace with your actual detail page
+            builder: (context) =>
+                const DetailKarir(), // Replace with your actual detail page
           ),
         );
       },
@@ -25,7 +60,7 @@ class PostCard extends StatelessWidget {
         elevation: 4,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white, 
+            color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
             boxShadow: [
               BoxShadow(
@@ -34,7 +69,7 @@ class PostCard extends StatelessWidget {
                 blurRadius: 5,
                 offset: const Offset(0, 3),
               ),
-            ], 
+            ],
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
