@@ -1,3 +1,4 @@
+import 'package:unishare/app/modules/admin/acara/acara_post_admin.dart';
 import 'package:unishare/app/modules/admin/acara/views/make_acara_post_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:unishare/app/modules/admin/beasiswa/beasiswa_post_admin.dart';
@@ -72,7 +73,7 @@ class DaDrawer extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MakeAcaraPost(),
+                          builder: (context) => AcaraAdmin(),
                         ));
                   },
                 ),
