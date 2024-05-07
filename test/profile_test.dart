@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:unishare/app/modules/admin/acara/views/make_acara_post_screen.dart';
 import 'package:unishare/app/modules/admin/karir/karirpostadmin.dart';
-import 'package:unishare/app/modules/admin/karir/makekarirpost.dart';
+import 'package:unishare/app/modules/profil/profil_page.dart';
 import 'package:unishare/app/widgets/card/adminpost.dart';
 
 import 'mock.dart';
 import 'test_helper.dart';
 
 void main() {
-  group('Admin karir test group', () {
+  group('Profile page test group', () {
     setupFirebaseAuthMocks();
 
     setUpAll(() async {
@@ -20,19 +20,21 @@ void main() {
 
     testWidgets('Verify the presence of widgets', (WidgetTester tester) async {
       FlutterError.onError = ignoreOverflowErrors;
-      await tester.pumpWidget(MaterialApp(home: KarirAdmin()));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ProfilPage(
+            namaController: TextEditingController(text: 'John Doe'),
+            emailController:
+                TextEditingController(text: 'john.doe@example.com'),
+            passwordController: TextEditingController(),
+            alamatController: TextEditingController(text: '123 Main Street'),
+          ),
+        ),
+      );
 
-      expect(find.widgetWithText(AppBar, 'Karir'), findsOneWidget);
-      expect(find.byType(Expanded), findsAny);
-    });
-
-    testWidgets('Verify the behavior of FloatingActionButton', (WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(home: KarirAdmin()));
-
-      await tester.tap(find.byType(FloatingActionButton));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(MakeKarirPost), findsOneWidget);
+      expect(find.widgetWithText(AppBar, 'Profil'), findsOneWidget);
+      expect(find.byType(TextFormField), findsExactly(4));
+      expect(find.byType(CircleAvatar), findsOneWidget);
     });
   });
 }

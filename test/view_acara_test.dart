@@ -50,6 +50,7 @@ void main() {
         expect(find.byType(category['page']), findsOneWidget);
 
         if (tester.widgetList(find.byType(PostCard)).isNotEmpty) {
+          await tester.ensureVisible(find.byType(PostCard));
           await tester.tap(find.byType(PostCard).first);
           await tester.pumpAndSettle();
           expect(find.byType(category['page']), findsNothing);
