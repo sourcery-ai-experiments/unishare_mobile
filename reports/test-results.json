@@ -1,9 +1,9 @@
-{"protocolVersion":"0.1.1","runnerVersion":null,"pid":48175,"type":"start","time":0}
+{"protocolVersion":"0.1.1","runnerVersion":null,"pid":32397,"type":"start","time":0}
 {"suite":{"id":0,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/homescreen_test.dart"},"type":"suite","time":0}
 {"test":{"id":1,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/homescreen_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":1}
 {"suite":{"id":2,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/login_test.dart"},"type":"suite","time":4}
 {"test":{"id":3,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/login_test.dart","suiteID":2,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":4}
-{"suite":{"id":4,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/onboarding_screen_test.dart"},"type":"suite","time":4}
+{"suite":{"id":4,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/onboarding_screen_test.dart"},"type":"suite","time":5}
 {"test":{"id":5,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/onboarding_screen_test.dart","suiteID":4,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":5}
 {"suite":{"id":6,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/register_test.dart"},"type":"suite","time":5}
 {"test":{"id":7,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/register_test.dart","suiteID":6,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":5}
@@ -16,41 +16,41 @@
 {"suite":{"id":14,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/view_acara_test.dart"},"type":"suite","time":6}
 {"test":{"id":15,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/view_acara_test.dart","suiteID":14,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":6}
 {"count":15,"time":7,"type":"allSuites"}
-{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":2383}
-{"suite":{"id":16,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/view_karir_test.dart"},"type":"suite","time":2423}
-{"test":{"id":17,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/view_karir_test.dart","suiteID":16,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":2424}
-{"testID":3,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":2851}
-{"suite":{"id":18,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_acara_test.dart"},"type":"suite","time":2882}
-{"test":{"id":19,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_acara_test.dart","suiteID":18,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":2883}
-{"testID":5,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":3254}
-{"suite":{"id":20,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_dashboard_test.dart"},"type":"suite","time":3283}
-{"test":{"id":21,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_dashboard_test.dart","suiteID":20,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":3284}
-{"testID":7,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":3600}
-{"suite":{"id":22,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_karir_test.dart"},"type":"suite","time":3639}
-{"test":{"id":23,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_karir_test.dart","suiteID":22,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":3640}
-{"testID":9,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":3982}
-{"suite":{"id":24,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/profile_test.dart"},"type":"suite","time":4018}
-{"test":{"id":25,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/profile_test.dart","suiteID":24,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":4018}
-{"testID":11,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":4237}
-{"suite":{"id":26,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_beasiswa_test.dart"},"type":"suite","time":4263}
-{"test":{"id":27,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_beasiswa_test.dart","suiteID":26,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":4263}
-{"testID":13,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":4582}
-{"group":{"id":28,"suiteID":12,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":4585}
-{"group":{"id":29,"suiteID":12,"parentID":28,"name":"Milestone test group","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":14,"column":3,"url":"file:///home/flxnzz/AndroidStudioProjects/unishare_mobile/test/milestone_test.dart"},"type":"group","time":4586}
-{"test":{"id":30,"name":"Milestone test group (setUpAll)","suiteID":12,"groupIDs":[28,29],"metadata":{"skip":false,"skipReason":null},"line":17,"column":5,"url":"file:///home/flxnzz/AndroidStudioProjects/unishare_mobile/test/milestone_test.dart"},"type":"testStart","time":4586}
-{"testID":30,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":4619}
-{"test":{"id":31,"name":"Milestone test group Verify the presence of widgets on the Milestone Page","suiteID":12,"groupIDs":[28,29],"metadata":{"skip":false,"skipReason":null},"line":165,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":21,"root_column":5,"root_url":"file:///home/flxnzz/AndroidStudioProjects/unishare_mobile/test/milestone_test.dart"},"type":"testStart","time":4621}
-{"testID":15,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":4882}
-{"suite":{"id":32,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/chatroom_test.dart"},"type":"suite","time":4911}
-{"test":{"id":33,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/chatroom_test.dart","suiteID":32,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":4911}
-{"testID":17,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5148}
-{"testID":19,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5491}
-{"testID":21,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5872}
-{"testID":31,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":6002}
-{"test":{"id":34,"name":"Milestone test group (tearDownAll)","suiteID":12,"groupIDs":[28,29],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":6003}
-{"testID":34,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6011}
-{"testID":23,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6179}
-{"testID":25,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6509}
-{"testID":27,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6787}
-{"testID":33,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6984}
-{"success":true,"type":"done","time":7014}
+{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":2336}
+{"suite":{"id":16,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/view_karir_test.dart"},"type":"suite","time":2378}
+{"test":{"id":17,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/view_karir_test.dart","suiteID":16,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":2378}
+{"testID":3,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":2838}
+{"suite":{"id":18,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_acara_test.dart"},"type":"suite","time":2872}
+{"test":{"id":19,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_acara_test.dart","suiteID":18,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":2873}
+{"testID":5,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":3186}
+{"suite":{"id":20,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_dashboard_test.dart"},"type":"suite","time":3217}
+{"test":{"id":21,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_dashboard_test.dart","suiteID":20,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":3217}
+{"testID":7,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":3546}
+{"suite":{"id":22,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_karir_test.dart"},"type":"suite","time":3578}
+{"test":{"id":23,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_karir_test.dart","suiteID":22,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":3579}
+{"testID":9,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":3864}
+{"suite":{"id":24,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/profile_test.dart"},"type":"suite","time":3892}
+{"test":{"id":25,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/profile_test.dart","suiteID":24,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":3893}
+{"testID":11,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":4138}
+{"suite":{"id":26,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_beasiswa_test.dart"},"type":"suite","time":4163}
+{"test":{"id":27,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/admin_beasiswa_test.dart","suiteID":26,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":4163}
+{"testID":13,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":4374}
+{"suite":{"id":28,"platform":"vm","path":"/home/flxnzz/AndroidStudioProjects/unishare_mobile/test/chatroom_test.dart"},"type":"suite","time":4399}
+{"test":{"id":29,"name":"loading /home/flxnzz/AndroidStudioProjects/unishare_mobile/test/chatroom_test.dart","suiteID":28,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":4399}
+{"testID":15,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":4653}
+{"group":{"id":30,"suiteID":14,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":4655}
+{"group":{"id":31,"suiteID":14,"parentID":30,"name":"Acara page test group","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":16,"column":3,"url":"file:///home/flxnzz/AndroidStudioProjects/unishare_mobile/test/view_acara_test.dart"},"type":"group","time":4655}
+{"test":{"id":32,"name":"Acara page test group (setUpAll)","suiteID":14,"groupIDs":[30,31],"metadata":{"skip":false,"skipReason":null},"line":19,"column":5,"url":"file:///home/flxnzz/AndroidStudioProjects/unishare_mobile/test/view_acara_test.dart"},"type":"testStart","time":4655}
+{"testID":32,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":4682}
+{"test":{"id":33,"name":"Acara page test group Verify post card on each category can navigates to detail acara, and \"Persyaratan\" tab on detail acara can be pressed","suiteID":14,"groupIDs":[30,31],"metadata":{"skip":false,"skipReason":null},"line":165,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":35,"root_column":5,"root_url":"file:///home/flxnzz/AndroidStudioProjects/unishare_mobile/test/view_acara_test.dart"},"type":"testStart","time":4685}
+{"testID":17,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":4946}
+{"testID":19,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5312}
+{"testID":21,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5635}
+{"testID":23,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5934}
+{"testID":25,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6316}
+{"testID":27,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6635}
+{"testID":33,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":6846}
+{"test":{"id":34,"name":"Acara page test group (tearDownAll)","suiteID":14,"groupIDs":[30,31],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":6847}
+{"testID":34,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6853}
+{"testID":29,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6864}
+{"success":true,"type":"done","time":6897}
