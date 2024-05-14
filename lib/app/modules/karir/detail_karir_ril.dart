@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unishare/app/models/karirmodel.dart';
+import 'package:unishare/app/modules/karir/form_daftar_karir.dart';
 import 'package:unishare/app/widgets/card/description_card.dart';
 import 'package:unishare/app/widgets/card/detail_top_card.dart';
 import 'package:unishare/app/widgets/card/regulation_card.dart';
@@ -110,6 +111,7 @@ class _DetailKarirState extends State<DetailKarirRil> {
                     ),
                     const SizedBox(height: 10),
                     Expanded(
+                      flex: 1,
                       child: TabBarView(
                         children: [
                           ListView(
@@ -128,12 +130,54 @@ class _DetailKarirState extends State<DetailKarirRil> {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                              Color.fromRGBO(247, 86, 0, 1)),
+                          padding: MaterialStatePropertyAll(EdgeInsets.only(
+                              left: 150, top: 20, right: 150, bottom: 20))),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                DaftarKarir(karirID: widget.karirID),
+                          ),
+                        );
+                      },
+                      child: const Text('Daftar',
+                          style: TextStyle(color: Colors.white)),
+                    ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),
             ),
           ],
         ),
+        // floatingActionButton: Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     ElevatedButton(
+        //       style: const ButtonStyle(
+        //           backgroundColor:
+        //               MaterialStatePropertyAll(Color.fromRGBO(247, 86, 0, 1)),
+        //           padding: MaterialStatePropertyAll(EdgeInsets.only(
+        //               left: 150, top: 20, right: 150, bottom: 20))),
+        //       onPressed: () {
+        //         Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //             builder: (context) => DaftarKarir(),
+        //           ),
+        //         );
+        //       },
+        //       child:
+        //           const Text('Daftar', style: TextStyle(color: Colors.white)),
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }

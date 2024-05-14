@@ -26,6 +26,11 @@ class KarirService {
     return _firestore.collection('karir').snapshots();
   }
 
+  //read by id
+  Future<DocumentSnapshot> getKarirByID(String id) {
+    return _firestore.collection('karir').doc(id).get();
+  }
+
   //update
   static Future<KarirPost> updateKarir(
       BuildContext context, karirPost, String id) async {

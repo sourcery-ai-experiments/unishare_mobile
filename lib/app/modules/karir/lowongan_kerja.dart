@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:unishare/app/controller/karircontroller.dart';
+import 'package:unishare/app/controller/karir_controller.dart';
 import 'package:unishare/app/models/karirmodel.dart';
 import 'package:unishare/app/modules/karir/detail_karir.dart';
 import 'package:unishare/app/modules/karir/detail_karir_ril.dart';
