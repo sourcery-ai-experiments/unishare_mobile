@@ -6,7 +6,7 @@ import 'package:unishare/app/modules/beasiswa/views/beasiswa_screen.dart';
 import 'package:unishare/app/modules/dashboard/views/dashboard_screen.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
 import 'package:unishare/app/modules/jadwal/jadwal_page.dart';
-import 'package:unishare/app/modules/karir/views/karir_page.dart';
+import 'package:unishare/app/modules/karir/karir_page.dart';
 
 import 'package:unishare/app/modules/leaderboard/views/leaderboard_page.dart';
 import 'package:unishare/app/modules/milestone/views/milestone_page.dart';
@@ -130,10 +130,9 @@ void main() {
           await tester.pumpAndSettle();
 
           // Verify that we're back on the home screen
-          if(navigationTest['pageType'] != MilestonePage){
+          if (navigationTest['pageType'] != MilestonePage) {
             expect(find.byType(HomeScreen), findsOneWidget);
           }
-
         }
       },
     );

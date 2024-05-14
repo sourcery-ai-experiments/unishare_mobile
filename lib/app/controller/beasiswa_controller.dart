@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:unishare/app/modules/admin/beasiswa/beasiswa_model.dart';
+import 'package:unishare/app/models/beasiswa_model.dart';
 import 'package:unishare/app/modules/admin/beasiswa/make_beasiswa_post.dart';
 import 'package:unishare/app/modules/beasiswa/views/beasiswa_screen.dart';
 
