@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:unishare/app/modules/admin/karir/updatekarirpost.dart';
 
 class AdminPostCard extends StatelessWidget {
   final String type;
@@ -62,14 +61,14 @@ class AdminPostCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        type,
-                        style: const TextStyle(
-                          fontFamily: 'Rubik',
-                          fontWeight: FontWeight.normal,
-                          fontSize: 12,
-                          color: Color(0xFFF75600),
-                        ),
+                      type,
+                      style: const TextStyle(
+                        fontFamily: 'Rubik',
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12,
+                        color: Color(0xFFF75600),
                       ),
+                    ),
                       Text(
                         title,
                         style: const TextStyle(
@@ -105,7 +104,7 @@ class AdminPostCard extends StatelessWidget {
                 ),
                 IconButton(
                   icon: Icon(Icons.delete),
-                  onPressed: () {
+                  onPressed: delete != null ? () {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -122,17 +121,25 @@ class AdminPostCard extends StatelessWidget {
                             ),
                             TextButton(
                               onPressed: () {
+                                try {
+                                  delete!();
+                                  Navigator.of(context).pop();
+                                } catch (e) {
+                                  print('Error in delete function: $e');
+                                }
                                 // Tambahkan logika untuk menghapus post di sini
                                 delete!();
                                 Navigator.of(context).pop(); // Tutup dialog
                               },
                               child: Text('Delete'),
+                              key: Key("delete-button"),
                             ),
                           ],
                         );
                       },
                     );
-                  },
+                  }
+                  : null,
                 ),
               ],
             ),

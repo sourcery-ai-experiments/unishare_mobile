@@ -25,7 +25,13 @@ class BeasiswaService {
 
   //read
   Stream<QuerySnapshot> getBeasiswas() {
-    return _firestore.collection('beasiswa').snapshots();
+    try {
+      return _firestore.collection('beasiswa').snapshots();
+    } catch (e) {
+      // Handle any errors that occur while fetching the data
+      print('Error fetching beasiswa data: $e');
+      return const Stream.empty(); // Return an empty stream to avoid null
+    }
   }
 
   //update
