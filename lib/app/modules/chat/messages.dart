@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
-import 'package:unishare/app/modules/chat/controller/chat_controller.dart';
+import 'package:unishare/app/controller/chat_controller.dart';
 
 class ChatPage extends StatefulWidget {
   final String receiverUserName;
