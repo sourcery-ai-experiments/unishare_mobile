@@ -6,7 +6,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:unishare/app/modules/chat/chatroom.dart';
 import 'package:unishare/app/modules/homescreen/home_screen.dart';
-import 'package:unishare/app/modules/karir/views/karir_page.dart';
 
 import 'mock.dart';
 import 'test_helper.dart';

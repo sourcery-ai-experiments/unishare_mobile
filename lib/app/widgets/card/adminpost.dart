@@ -22,6 +22,10 @@ class AdminPostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String finaldeskripsi = deskripsi;
+    if (deskripsi.length > 19) {
+      finaldeskripsi = deskripsi.substring(0, 36) + '...';
+    }
     return GestureDetector(
       child: Card(
         margin: const EdgeInsets.only(top: 5, right: 30, left: 30, bottom: 15),
@@ -88,7 +92,7 @@ class AdminPostCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        deskripsi,
+                        finaldeskripsi,
                         style: const TextStyle(
                           fontFamily: 'Rubik',
                           fontWeight: FontWeight.w200,
