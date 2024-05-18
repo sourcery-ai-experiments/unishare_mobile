@@ -40,7 +40,7 @@ class LowonganKerjaPage extends StatelessWidget {
 
   Widget _buildKarirList(BuildContext context) {
     return StreamBuilder(
-        stream: _karirService.getKarirs(),
+        stream: _karirService.getDocumentsByKategori('Lowongan Kerja'),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Text('Error');
